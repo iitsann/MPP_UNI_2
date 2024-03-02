@@ -1,0 +1,22 @@
+  [1m[35m (126.8ms)[0m  [1m[35mCREATE DATABASE "forum_db" ENCODING = 'unicode'[0m
+  [1m[35m (82.7ms)[0m  [1m[35mCREATE DATABASE "blogpg_test" ENCODING = 'unicode'[0m
+  [1m[35m (58.7ms)[0m  [1m[35mCREATE DATABASE "forum_db" ENCODING = 'unicode'[0m
+  [1m[35m (60.6ms)[0m  [1m[35mCREATE DATABASE "forum_test" ENCODING = 'unicode'[0m
+Started GET "/" for 127.0.0.1 at 2024-03-03 14:20:48 +0200
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.4ms | Allocations: 384)
+Completed 200 OK in 21ms (Views: 6.4ms | ActiveRecord: 0.0ms | Allocations: 7491)
+
+
+Started GET "/" for 127.0.0.1 at 2024-03-03 15:09:16 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (3.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.5ms | Allocations: 384)
+Completed 200 OK in 19ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 4524)
+
+
