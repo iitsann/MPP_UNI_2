@@ -1,0 +1,9 @@
+<p class="text-success"><%= notice %></p>
+
+<%= render "topic", topic: @topic %>
+
+<div class="d-flex justify-content-between align-items-center">
+  <%= link_to "Back to topics", topics_path, class: "btn btn-secondary" %>
+  <%= link_to "Edit this topic", edit_topic_path(@topic), class: "btn btn-primary" %>
+  <%= button_to "Destroy this topic", topic_path(@topic), method: :delete, class: "btn btn-danger" %>
+</div>
