@@ -1,1 +1,17 @@
-<h1>Welcome to our forum!</h1>
+<p style="color: green"><%= notice %></p>
+
+<h1>Reddits</h1>
+
+<div class="row">
+  <% @reddits.each do |reddit| %>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= reddit.topic %></h5>
+          <p class="card-text"><%= reddit.subreddit %></p>
+          <a class="card-text" target="_blank" href=<%= reddit.link %>><%= reddit.link %></a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

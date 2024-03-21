@@ -33,6 +33,10 @@ gem 'bootstrap', '~> 5.3.2'
 gem 'dartsass-sprockets', '~> 3.0.0'
 gem 'jquery-rails'
 
+# Parse
+gem 'nokogiri'
+gem 'open-uri'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
