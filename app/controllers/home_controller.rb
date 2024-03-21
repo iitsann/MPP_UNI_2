@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @reddits = Reddit.all
+    @reddits = Reddit.order(:topic).page params[:page]
   end
 end

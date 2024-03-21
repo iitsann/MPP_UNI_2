@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   resources :reddits
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root 'home#index'
+
+  # root 'home#index' do
+  #   get '/page/:page', action: :index, on: :collection
+  # end
+
   devise_for :users
   get 'home', to: 'home#index', as: 'home'
   get 'about', to: 'pages#about'

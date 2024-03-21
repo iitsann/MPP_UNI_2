@@ -27,15 +27,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_21_175213) do
     t.index ["topic_id"], name: "index_posts_on_topic_id"
   end
 
-  create_table "profiles", force: :cascade do |t|
-    t.string "username"
-    t.integer "user_id"
-    t.string "avatar_url"
-    t.string "region"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "reddits", force: :cascade do |t|
     t.string "topic"
     t.string "subreddit"
