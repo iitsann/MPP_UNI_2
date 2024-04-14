@@ -5,7 +5,7 @@ ActiveAdmin.register Post do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :img_link, :title, :body, :replies, :likes, :dislikes, :topic_id, :isHidden
+  permit_params :img_link, :title, :body, :replies, :likes, :dislikes, :topic_id, :is_hidden
 
   actions :all
 

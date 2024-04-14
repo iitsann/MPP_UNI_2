@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: %i[ show edit update destroy ]
+  before_action :check_ban, only: [:create, :edit]
 
   # GET /topics or /topics.json
   def index
@@ -58,13 +59,20 @@ class TopicsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_topic
-      @topic = Topic.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def topic_params
-      params.require(:topic).permit(:name, :description)
+  # Use callbacks to share common setup or constraints between actions.
+  def set_topic
+    @topic = Topic.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def topic_params
+    params.require(:topic).permit(:name, :description)
+  end
+
+  def check_ban
+    if current_user.is_banned
+      redirect_to root_path, alert: 'Your account is banned. You cannot perform this action.'
     end
+  end
 end

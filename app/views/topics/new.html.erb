@@ -1,7 +1,11 @@
-<h1 class="mb-4">New Topic</h1>
-
-<%= render "form", topic: @topic %>
-
+<% if current_user&.is_banned %>
+  <h1>You can't create topics, your account is banned</h1>
+<% elsif !current_user %>
+  <h1>You have to sign in/sign up make a topic</h1>
+<% else %>
+  <h1 class="mb-4">New Topic</h1>
+  <%= render "form", topic: @topic %>
+<% end %>
 <br>
 
 <div>
