@@ -40,6 +40,9 @@ gem 'open-uri'
 # Pagination
 gem 'kaminari'
 
+# Active Admin
+gem "activeadmin"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

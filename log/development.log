@@ -23337,3 +23337,1331 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 16ms (Views: 13.5ms | ActiveRecord: 1.6ms | Allocations: 10059)
 
 
+Started GET "/" for 127.0.0.1 at 2024-04-14 13:26:30 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mReddit Load (3.2ms)[0m  [1m[34mSELECT "reddits".* FROM "reddits" ORDER BY "reddits"."topic" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 15], ["OFFSET", 0]]
+  ↳ app/views/home/index.html.erb:6
+  [1m[36mReddit Count (5.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "reddits"[0m
+  ↳ app/views/home/index.html.erb:20
+  Rendered home/index.html.erb within layouts/application (Duration: 341.7ms | Allocations: 18744)
+  Rendered layouts/_navbar.html.erb (Duration: 1.1ms | Allocations: 658)
+  Rendered layout layouts/application.html.erb (Duration: 386.1ms | Allocations: 53675)
+Completed 200 OK in 428ms (Views: 377.7ms | ActiveRecord: 25.1ms | Allocations: 63040)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-04-14 13:26:33 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.9ms | Allocations: 472)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 9.3ms | Allocations: 3553)
+  Rendered layouts/_navbar.html.erb (Duration: 0.3ms | Allocations: 206)
+  Rendered layout layouts/application.html.erb (Duration: 16.9ms | Allocations: 9948)
+Completed 200 OK in 46ms (Views: 18.5ms | ActiveRecord: 8.3ms | Allocations: 20785)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2024-04-14 13:27:31 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper#devise_error_messages!` is deprecated and will be
+removed in the next major version.
+
+Devise now uses a partial under "devise/shared/error_messages" to display
+error messages by default, and make them easier to customize. Update your
+views changing calls from:
+
+    <%= devise_error_messages! %>
+
+to:
+
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+To start customizing how errors are displayed, you can copy the partial
+from devise to your `app/views` folder. Alternatively, you can run
+`rails g devise:views` which will copy all of them again to your app.
+ (called from block in _app_views_users_registrations_new_html_erb__1399883693384402614_45360 at /Users/mama/RubymineProjects/MPP_UNI_2/app/views/users/registrations/new.html.erb:4)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1762)
+  Rendered layouts/_navbar.html.erb (Duration: 0.4ms | Allocations: 476)
+  Rendered layout layouts/application.html.erb (Duration: 12.8ms | Allocations: 8785)
+Completed 200 OK in 27ms (Views: 14.4ms | ActiveRecord: 8.4ms | Allocations: 14072)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-04-14 13:27:46 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mUser Exists? (5.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper#devise_error_messages!` is deprecated and will be
+removed in the next major version.
+
+Devise now uses a partial under "devise/shared/error_messages" to display
+error messages by default, and make them easier to customize. Update your
+views changing calls from:
+
+    <%= devise_error_messages! %>
+
+to:
+
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+To start customizing how errors are displayed, you can copy the partial
+from devise to your `app/views` folder. Alternatively, you can run
+`rails g devise:views` which will copy all of them again to your app.
+ (called from block in _app_views_users_registrations_new_html_erb__1399883693384402614_45360 at /Users/mama/RubymineProjects/MPP_UNI_2/app/views/users/registrations/new.html.erb:4)
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.8ms | Allocations: 866)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 2942)
+  Rendered layouts/_navbar.html.erb (Duration: 0.1ms | Allocations: 147)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 9216)
+Completed 422 Unprocessable Entity in 331ms (Views: 6.9ms | ActiveRecord: 7.1ms | Allocations: 17436)
+
+
+Started POST "/users" for 127.0.0.1 at 2024-04-14 13:27:59 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mUser Exists? (2.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mUser Create (4.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "test@mail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-04-14 10:27:59.399592"], ["updated_at", "2024-04-14 10:27:59.399592"]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 300ms (ActiveRecord: 9.7ms | Allocations: 6932)
+
+
+Started GET "/" for 127.0.0.1 at 2024-04-14 13:27:59 +0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mReddit Load (2.0ms)[0m  [1m[34mSELECT "reddits".* FROM "reddits" ORDER BY "reddits"."topic" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 15], ["OFFSET", 0]]
+  ↳ app/views/home/index.html.erb:6
+  [1m[36mReddit Count (3.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "reddits"[0m
+  ↳ app/views/home/index.html.erb:20
+  Rendered home/index.html.erb within layouts/application (Duration: 14.4ms | Allocations: 8531)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_navbar.html.erb:13
+  Rendered layouts/_navbar.html.erb (Duration: 4.8ms | Allocations: 1434)
+  Rendered layout layouts/application.html.erb (Duration: 22.5ms | Allocations: 16183)
+Completed 200 OK in 27ms (Views: 14.7ms | ActiveRecord: 10.8ms | Allocations: 18182)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4030998507041258760)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to DeviseCreateAdminUsers (20240414123727)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.7ms)[0m  [1m[35mCREATE TABLE "admin_users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admin_users_on_email" ON "admin_users" ("email")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admin_users_on_reset_password_token" ON "admin_users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240414123727') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveAdminComments (20240414123728)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" bigserial primary key, "namespace" character varying, "body" text, "resource_type" character varying, "resource_id" bigint, "author_type" character varying, "author_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_active_admin_comments_on_resource" ON "active_admin_comments" ("resource_type", "resource_id")[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE INDEX "index_active_admin_comments_on_author" ON "active_admin_comments" ("author_type", "author_id")[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE INDEX "index_active_admin_comments_on_namespace" ON "active_admin_comments" ("namespace")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240414123728') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4030998507041258760)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2024-04-14 15:43:07 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mReddit Load (3.5ms)[0m  [1m[34mSELECT "reddits".* FROM "reddits" ORDER BY "reddits"."topic" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 15], ["OFFSET", 0]]
+  ↳ app/views/home/index.html.erb:6
+  [1m[36mReddit Count (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "reddits"[0m
+  ↳ app/views/home/index.html.erb:20
+  Rendered home/index.html.erb within layouts/application (Duration: 30.3ms | Allocations: 18081)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_navbar.html.erb:13
+  Rendered layouts/_navbar.html.erb (Duration: 18.0ms | Allocations: 11185)
+  Rendered layout layouts/application.html.erb (Duration: 1665.6ms | Allocations: 435009)
+Completed 200 OK in 1705ms (Views: 1647.9ms | ActiveRecord: 36.9ms | Allocations: 444351)
+
+
+Started GET "/admin/sign_up" for 127.0.0.1 at 2024-04-14 15:54:03 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/sign_up"):
+  
+Started GET "/admin/login" for 127.0.0.1 at 2024-04-14 15:54:14 +0300
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering layout /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/layouts/active_admin_logged_out.html.erb
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/devise/shared/_links.erb (Duration: 1.4ms | Allocations: 952)
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (Duration: 24.2ms | Allocations: 12101)
+  Rendered layout /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/layouts/active_admin_logged_out.html.erb (Duration: 34.7ms | Allocations: 23961)
+Completed 200 OK in 128ms (Views: 37.2ms | ActiveRecord: 15.9ms | Allocations: 32559)
+
+
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAdminUser Exists? (13.8ms)[0m  [1m[34mSELECT 1 AS one FROM "admin_users" WHERE "admin_users"."email" = $1 LIMIT $2[0m  [["email", "admin@karazin.ua"], ["LIMIT", 1]]
+  [1m[36mAdminUser Create (6.0ms)[0m  [1m[32mINSERT INTO "admin_users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "admin@karazin.ua"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-04-14 12:56:48.218891"], ["updated_at", "2024-04-14 12:56:48.218891"]]
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/admin/login" for 127.0.0.1 at 2024-04-14 15:56:57 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (3.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering layout /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/layouts/active_admin_logged_out.html.erb
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/devise/shared/_links.erb (Duration: 0.8ms | Allocations: 997)
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (Duration: 9.3ms | Allocations: 11364)
+  Rendered layout /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/layouts/active_admin_logged_out.html.erb (Duration: 67.5ms | Allocations: 67819)
+Completed 200 OK in 124ms (Views: 73.0ms | ActiveRecord: 18.6ms | Allocations: 88866)
+
+
+Started POST "/admin/login" for 127.0.0.1 at 2024-04-14 15:57:07 +0300
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "admin_user"=>{"email"=>"admin@karazin,ua", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Login"}
+  [1m[36mAdminUser Load (2.3ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["email", "admin@karazin,ua"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+Completed 401 Unauthorized in 18ms (ActiveRecord: 2.9ms | Allocations: 4856)
+
+
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "admin_user"=>{"email"=>"admin@karazin,ua", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Login"}
+  Rendering layout /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/layouts/active_admin_logged_out.html.erb
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/devise/shared/_links.erb (Duration: 0.1ms | Allocations: 105)
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (Duration: 2.4ms | Allocations: 6518)
+  Rendered layout /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/layouts/active_admin_logged_out.html.erb (Duration: 8.5ms | Allocations: 17426)
+Completed 200 OK in 292ms (Views: 8.9ms | ActiveRecord: 0.0ms | Allocations: 18707)
+
+
+Started POST "/admin/login" for 127.0.0.1 at 2024-04-14 15:57:15 +0300
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "admin_user"=>{"email"=>"admin@karazin.ua", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Login"}
+  [1m[36mAdminUser Load (1.9ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["email", "admin@karazin.ua"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mAdminUser Update (4.3ms)[0m  [1m[33mUPDATE "admin_users" SET "remember_created_at" = $1, "updated_at" = $2 WHERE "admin_users"."id" = $3[0m  [["remember_created_at", "2024-04-14 12:57:15.487210"], ["updated_at", "2024-04-14 12:57:15.487449"], ["id", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+Redirected to http://127.0.0.1:3000/admin
+Completed 303 See Other in 306ms (ActiveRecord: 10.0ms | Allocations: 8011)
+
+
+Started GET "/admin" for 127.0.0.1 at 2024-04-14 15:57:15 +0300
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (1.2ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/page/index.html.arb
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/page/index.html.arb (Duration: 8.3ms | Allocations: 15605)
+Completed 200 OK in 17ms (Views: 9.3ms | ActiveRecord: 1.2ms | Allocations: 18669)
+
+
+Started GET "/admin/admin_users" for 127.0.0.1 at 2024-04-14 16:00:14 +0300
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (5.7ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mAdminUser Load (6.3ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" ORDER BY "admin_users"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 43.7ms | Allocations: 26343)
+Completed 500 Internal Server Error in 96ms (ActiveRecord: 12.0ms | Allocations: 32401)
+
+
+  
+ActionView::Template::Error (Ransack needs AdminUser attributes explicitly allowlisted as
+searchable. Define a `ransackable_attributes` class method in your `AdminUser`
+model, watching out for items you DON'T want searchable (for
+example, `encrypted_password`, `password_reset_token`, `owner` or
+other sensitive information). You can use the following as a base:
+
+```ruby
+class AdminUser < ApplicationRecord
+
+  # ...
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "email", "encrypted_password", "id", "id_value", "remember_created_at", "reset_password_sent_at", "reset_password_token", "updated_at"]
+  end
+
+  # ...
+
+end
+```
+):
+    1: # frozen_string_literal: true
+    2: insert_tag renderer_for(:index)
+  
+app/controllers/application_controller.rb:9:in `switch_locale'
+Started GET "/admin/comments" for 127.0.0.1 at 2024-04-14 16:00:16 +0300
+Processing by Admin::CommentsController#index as HTML
+  [1m[36mAdminUser Load (2.1ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mActiveAdmin::Comment Count (4.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1[0m  [["namespace", "admin"]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mActiveAdmin::Comment Load (0.9ms)[0m  [1m[34mSELECT "active_admin_comments".* FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1 ORDER BY "active_admin_comments"."id" desc LIMIT $2 OFFSET $3[0m  [["namespace", "admin"], ["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mActiveAdmin::Comment Pluck (4.5ms)[0m  [1m[34mSELECT DISTINCT "active_admin_comments"."resource_type" FROM "active_admin_comments" ORDER BY resource_type asc[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mActiveAdmin::Comment Pluck (2.3ms)[0m  [1m[34mSELECT DISTINCT "active_admin_comments"."author_type" FROM "active_admin_comments" ORDER BY author_type asc[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 54.9ms | Allocations: 32771)
+Completed 200 OK in 76ms (Views: 43.8ms | ActiveRecord: 25.7ms | Allocations: 36052)
+
+
+Started GET "/admin/admin_users" for 127.0.0.1 at 2024-04-14 16:00:34 +0300
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (0.8ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mAdminUser Load (1.6ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" ORDER BY "admin_users"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 21.8ms | Allocations: 21529)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 2.3ms | Allocations: 23492)
+
+
+  
+ActionView::Template::Error (Ransack needs AdminUser attributes explicitly allowlisted as
+searchable. Define a `ransackable_attributes` class method in your `AdminUser`
+model, watching out for items you DON'T want searchable (for
+example, `encrypted_password`, `password_reset_token`, `owner` or
+other sensitive information). You can use the following as a base:
+
+```ruby
+class AdminUser < ApplicationRecord
+
+  # ...
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "email", "encrypted_password", "id", "id_value", "remember_created_at", "reset_password_sent_at", "reset_password_token", "updated_at"]
+  end
+
+  # ...
+
+end
+```
+):
+    1: # frozen_string_literal: true
+    2: insert_tag renderer_for(:index)
+  
+app/controllers/application_controller.rb:9:in `switch_locale'
+Started GET "/admin/admin_users" for 127.0.0.1 at 2024-04-14 16:04:49 +0300
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (0.8ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mAdminUser Load (1.4ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" ORDER BY "admin_users"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 18.7ms | Allocations: 27960)
+Completed 200 OK in 57ms (Views: 18.9ms | ActiveRecord: 31.9ms | Allocations: 34886)
+
+
+Started GET "/admin/admin_users" for 127.0.0.1 at 2024-04-14 17:05:11 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (1.3ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mAdminUser Load (1.3ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" ORDER BY "admin_users"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 70.1ms | Allocations: 78643)
+Completed 200 OK in 132ms (Views: 74.1ms | ActiveRecord: 17.2ms | Allocations: 104838)
+
+
+Started GET "/admin/posts" for 127.0.0.1 at 2024-04-14 17:05:13 +0300
+Processing by Admin::PostsController#index as HTML
+  [1m[36mAdminUser Load (0.7ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mPost Load (3.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (1.5ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 64.6ms | Allocations: 44530)
+Completed 500 Internal Server Error in 76ms (ActiveRecord: 14.2ms | Allocations: 47797)
+
+
+  
+ActionView::Template::Error (Ransack needs Post associations explicitly allowlisted as
+searchable. Define a `ransackable_associations` class method in your `Post`
+model, watching out for items you DON'T want searchable (for
+example, `encrypted_password`, `password_reset_token`, `owner` or
+other sensitive information). You can use the following as a base:
+
+```ruby
+class Post < ApplicationRecord
+
+  # ...
+
+  def self.ransackable_associations(auth_object = nil)
+    ["topic"]
+  end
+
+  # ...
+
+end
+```
+):
+    1: # frozen_string_literal: true
+    2: insert_tag renderer_for(:index)
+  
+app/controllers/application_controller.rb:9:in `switch_locale'
+Started GET "/admin/posts" for 127.0.0.1 at 2024-04-14 17:05:27 +0300
+Processing by Admin::PostsController#index as HTML
+  [1m[36mAdminUser Load (1.5ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mPost Load (1.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (0.6ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (1.5ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 30.9ms | Allocations: 39247)
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 24.2ms | Allocations: 46937)
+
+
+  
+ActionView::Template::Error (Ransack needs Post attributes explicitly allowlisted as
+searchable. Define a `ransackable_attributes` class method in your `Post`
+model, watching out for items you DON'T want searchable (for
+example, `encrypted_password`, `password_reset_token`, `owner` or
+other sensitive information). You can use the following as a base:
+
+```ruby
+class Post < ApplicationRecord
+
+  # ...
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["body", "created_at", "dislikes", "id", "id_value", "img_link", "likes", "replies", "title", "topic_id", "updated_at"]
+  end
+
+  # ...
+
+end
+```
+):
+    1: # frozen_string_literal: true
+    2: insert_tag renderer_for(:index)
+  
+app/controllers/application_controller.rb:9:in `switch_locale'
+Started GET "/admin/posts" for 127.0.0.1 at 2024-04-14 17:05:35 +0300
+Processing by Admin::PostsController#index as HTML
+  [1m[36mAdminUser Load (3.8ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mPost Load (3.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (1.9ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (5.3ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 46.6ms | Allocations: 52054)
+Completed 200 OK in 82ms (Views: 28.7ms | ActiveRecord: 48.4ms | Allocations: 59757)
+
+
+Started GET "/admin/reddits" for 127.0.0.1 at 2024-04-14 17:05:37 +0300
+Processing by Admin::RedditsController#index as HTML
+  [1m[36mAdminUser Load (1.0ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mReddit Load (4.3ms)[0m  [1m[34mSELECT "reddits".* FROM "reddits" ORDER BY "reddits"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mReddit Count (3.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "reddits"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 68.8ms | Allocations: 73906)
+Completed 500 Internal Server Error in 84ms (ActiveRecord: 15.6ms | Allocations: 76914)
+
+
+  
+ActionView::Template::Error (Ransack needs Reddit attributes explicitly allowlisted as
+searchable. Define a `ransackable_attributes` class method in your `Reddit`
+model, watching out for items you DON'T want searchable (for
+example, `encrypted_password`, `password_reset_token`, `owner` or
+other sensitive information). You can use the following as a base:
+
+```ruby
+class Reddit < ApplicationRecord
+
+  # ...
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "id", "id_value", "link", "subreddit", "topic", "updated_at"]
+  end
+
+  # ...
+
+end
+```
+):
+    1: # frozen_string_literal: true
+    2: insert_tag renderer_for(:index)
+  
+app/controllers/application_controller.rb:9:in `switch_locale'
+Started GET "/admin/reddits" for 127.0.0.1 at 2024-04-14 17:05:45 +0300
+Processing by Admin::RedditsController#index as HTML
+  [1m[36mAdminUser Load (0.6ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mReddit Load (3.5ms)[0m  [1m[34mSELECT "reddits".* FROM "reddits" ORDER BY "reddits"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mReddit Count (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "reddits"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 79.4ms | Allocations: 93621)
+Completed 200 OK in 98ms (Views: 75.7ms | ActiveRecord: 17.5ms | Allocations: 101142)
+
+
+Started GET "/admin/topics" for 127.0.0.1 at 2024-04-14 17:05:47 +0300
+Processing by Admin::TopicsController#index as HTML
+  [1m[36mAdminUser Load (0.4ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mTopic Load (1.8ms)[0m  [1m[34mSELECT "topics".* FROM "topics" ORDER BY "topics"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 26.1ms | Allocations: 24281)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 4.7ms | Allocations: 27048)
+
+
+  
+ActionView::Template::Error (Ransack needs Topic associations explicitly allowlisted as
+searchable. Define a `ransackable_associations` class method in your `Topic`
+model, watching out for items you DON'T want searchable (for
+example, `encrypted_password`, `password_reset_token`, `owner` or
+other sensitive information). You can use the following as a base:
+
+```ruby
+class Topic < ApplicationRecord
+
+  # ...
+
+  def self.ransackable_associations(auth_object = nil)
+    ["posts"]
+  end
+
+  # ...
+
+end
+```
+):
+    1: # frozen_string_literal: true
+    2: insert_tag renderer_for(:index)
+  
+app/controllers/application_controller.rb:9:in `switch_locale'
+Started GET "/admin/topics" for 127.0.0.1 at 2024-04-14 17:06:00 +0300
+Processing by Admin::TopicsController#index as HTML
+  [1m[36mAdminUser Load (0.6ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mTopic Load (1.6ms)[0m  [1m[34mSELECT "topics".* FROM "topics" ORDER BY "topics"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 30.6ms | Allocations: 34373)
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 27.8ms | Allocations: 41810)
+
+
+  
+ActionView::Template::Error (Ransack needs Topic attributes explicitly allowlisted as
+searchable. Define a `ransackable_attributes` class method in your `Topic`
+model, watching out for items you DON'T want searchable (for
+example, `encrypted_password`, `password_reset_token`, `owner` or
+other sensitive information). You can use the following as a base:
+
+```ruby
+class Topic < ApplicationRecord
+
+  # ...
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "description", "id", "id_value", "name", "updated_at"]
+  end
+
+  # ...
+
+end
+```
+):
+    1: # frozen_string_literal: true
+    2: insert_tag renderer_for(:index)
+  
+app/controllers/application_controller.rb:9:in `switch_locale'
+Started GET "/admin/topics" for 127.0.0.1 at 2024-04-14 17:06:07 +0300
+Processing by Admin::TopicsController#index as HTML
+  [1m[36mAdminUser Load (3.2ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mTopic Load (1.0ms)[0m  [1m[34mSELECT "topics".* FROM "topics" ORDER BY "topics"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mPost Load (3.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 30.4ms | Allocations: 41516)
+Completed 200 OK in 56ms (Views: 21.9ms | ActiveRecord: 29.6ms | Allocations: 48981)
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2024-04-14 17:06:09 +0300
+Processing by Admin::UsersController#index as HTML
+  [1m[36mAdminUser Load (5.0ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 25.0ms | Allocations: 27480)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 11.9ms | Allocations: 30331)
+
+
+  
+ActionView::Template::Error (Ransack needs User attributes explicitly allowlisted as
+searchable. Define a `ransackable_attributes` class method in your `User`
+model, watching out for items you DON'T want searchable (for
+example, `encrypted_password`, `password_reset_token`, `owner` or
+other sensitive information). You can use the following as a base:
+
+```ruby
+class User < ApplicationRecord
+
+  # ...
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "email", "encrypted_password", "id", "id_value", "remember_created_at", "reset_password_sent_at", "reset_password_token", "updated_at"]
+  end
+
+  # ...
+
+end
+```
+):
+    1: # frozen_string_literal: true
+    2: insert_tag renderer_for(:index)
+  
+app/controllers/application_controller.rb:9:in `switch_locale'
+Started GET "/admin/users" for 127.0.0.1 at 2024-04-14 17:06:18 +0300
+Processing by Admin::UsersController#index as HTML
+  [1m[36mAdminUser Load (0.5ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 23.5ms | Allocations: 38508)
+Completed 200 OK in 46ms (Views: 23.4ms | ActiveRecord: 17.7ms | Allocations: 46143)
+
+
+Started GET "/admin/topics" for 127.0.0.1 at 2024-04-14 17:06:20 +0300
+Processing by Admin::TopicsController#index as HTML
+  [1m[36mAdminUser Load (0.6ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mTopic Load (1.5ms)[0m  [1m[34mSELECT "topics".* FROM "topics" ORDER BY "topics"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mPost Load (1.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 40.2ms | Allocations: 37831)
+Completed 200 OK in 52ms (Views: 31.0ms | ActiveRecord: 15.2ms | Allocations: 40579)
+
+
+Started GET "/admin/reddits" for 127.0.0.1 at 2024-04-14 17:06:20 +0300
+Processing by Admin::RedditsController#index as HTML
+  [1m[36mAdminUser Load (3.7ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mReddit Load (2.4ms)[0m  [1m[34mSELECT "reddits".* FROM "reddits" ORDER BY "reddits"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mReddit Count (2.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "reddits"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 68.1ms | Allocations: 89855)
+Completed 200 OK in 90ms (Views: 64.9ms | ActiveRecord: 17.5ms | Allocations: 92406)
+
+
+Started GET "/admin/posts" for 127.0.0.1 at 2024-04-14 17:06:21 +0300
+Processing by Admin::PostsController#index as HTML
+  [1m[36mAdminUser Load (0.5ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (1.8ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (1.0ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 38.0ms | Allocations: 40558)
+Completed 200 OK in 43ms (Views: 34.8ms | ActiveRecord: 4.5ms | Allocations: 42602)
+
+
+Started GET "/admin/comments" for 127.0.0.1 at 2024-04-14 17:06:21 +0300
+Processing by Admin::CommentsController#index as HTML
+  [1m[36mAdminUser Load (0.4ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mActiveAdmin::Comment Count (3.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1[0m  [["namespace", "admin"]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mActiveAdmin::Comment Load (0.8ms)[0m  [1m[34mSELECT "active_admin_comments".* FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1 ORDER BY "active_admin_comments"."id" desc LIMIT $2 OFFSET $3[0m  [["namespace", "admin"], ["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mActiveAdmin::Comment Pluck (2.2ms)[0m  [1m[34mSELECT DISTINCT "active_admin_comments"."resource_type" FROM "active_admin_comments" ORDER BY resource_type asc[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mActiveAdmin::Comment Pluck (1.0ms)[0m  [1m[34mSELECT DISTINCT "active_admin_comments"."author_type" FROM "active_admin_comments" ORDER BY author_type asc[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 36.7ms | Allocations: 29879)
+Completed 200 OK in 46ms (Views: 29.7ms | ActiveRecord: 12.0ms | Allocations: 32726)
+
+
+Started GET "/admin/admin_users" for 127.0.0.1 at 2024-04-14 17:06:22 +0300
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (2.7ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mAdminUser Load (1.9ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" ORDER BY "admin_users"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 24.0ms | Allocations: 26378)
+Completed 200 OK in 35ms (Views: 23.1ms | ActiveRecord: 4.6ms | Allocations: 28677)
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2024-04-14 17:06:22 +0300
+Processing by Admin::UsersController#index as HTML
+  [1m[36mAdminUser Load (0.5ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 26.7ms | Allocations: 31791)
+Completed 200 OK in 33ms (Views: 26.2ms | ActiveRecord: 1.6ms | Allocations: 33459)
+
+
+Started GET "/admin/topics" for 127.0.0.1 at 2024-04-14 17:06:27 +0300
+Processing by Admin::TopicsController#index as HTML
+  [1m[36mAdminUser Load (1.3ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mTopic Load (2.5ms)[0m  [1m[34mSELECT "topics".* FROM "topics" ORDER BY "topics"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mPost Load (1.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 34.4ms | Allocations: 30592)
+Completed 200 OK in 42ms (Views: 30.6ms | ActiveRecord: 5.4ms | Allocations: 32251)
+
+
+Started GET "/admin/reddits" for 127.0.0.1 at 2024-04-14 17:06:28 +0300
+Processing by Admin::RedditsController#index as HTML
+  [1m[36mAdminUser Load (0.8ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mReddit Load (3.0ms)[0m  [1m[34mSELECT "reddits".* FROM "reddits" ORDER BY "reddits"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mReddit Count (3.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "reddits"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 65.6ms | Allocations: 86661)
+Completed 200 OK in 76ms (Views: 59.2ms | ActiveRecord: 7.7ms | Allocations: 88333)
+
+
+Started GET "/admin/reddits?order=id_desc&page=4" for 127.0.0.1 at 2024-04-14 17:06:33 +0300
+Processing by Admin::RedditsController#index as HTML
+  Parameters: {"order"=>"id_desc", "page"=>"4"}
+  [1m[36mAdminUser Load (0.6ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mReddit Load (1.0ms)[0m  [1m[34mSELECT "reddits".* FROM "reddits" ORDER BY "reddits"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 90]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mReddit Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "reddits"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 64.4ms | Allocations: 88106)
+Completed 200 OK in 72ms (Views: 63.9ms | ActiveRecord: 2.1ms | Allocations: 89756)
+
+
+Started GET "/admin/reddits?q%5Btopic_cont%5D=later&commit=Filter&order=id_desc" for 127.0.0.1 at 2024-04-14 17:06:42 +0300
+Processing by Admin::RedditsController#index as HTML
+  Parameters: {"q"=>{"topic_cont"=>"later"}, "commit"=>"Filter", "order"=>"id_desc"}
+  [1m[36mAdminUser Load (0.4ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mReddit Load (3.7ms)[0m  [1m[34mSELECT "reddits".* FROM "reddits" WHERE "reddits"."topic" ILIKE '%later%' ORDER BY "reddits"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mReddit Count (3.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "reddits" WHERE "reddits"."topic" ILIKE '%later%'[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 60.9ms | Allocations: 87571)
+Completed 200 OK in 66ms (Views: 54.4ms | ActiveRecord: 7.3ms | Allocations: 89661)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2024-04-14 17:08:23 +0300
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (5.8ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/page/index.html.arb
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/page/index.html.arb (Duration: 21.2ms | Allocations: 15459)
+Completed 200 OK in 41ms (Views: 23.7ms | ActiveRecord: 5.8ms | Allocations: 17464)
+
+
+Started GET "/admin/admin_users" for 127.0.0.1 at 2024-04-14 17:08:24 +0300
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (0.7ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mAdminUser Load (2.5ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" ORDER BY "admin_users"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 22.8ms | Allocations: 26137)
+Completed 200 OK in 30ms (Views: 20.9ms | ActiveRecord: 3.2ms | Allocations: 28083)
+
+
+Started GET "/admin/comments" for 127.0.0.1 at 2024-04-14 17:08:24 +0300
+Processing by Admin::CommentsController#index as HTML
+  [1m[36mAdminUser Load (0.7ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mActiveAdmin::Comment Count (2.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1[0m  [["namespace", "admin"]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mActiveAdmin::Comment Load (4.1ms)[0m  [1m[34mSELECT "active_admin_comments".* FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1 ORDER BY "active_admin_comments"."id" desc LIMIT $2 OFFSET $3[0m  [["namespace", "admin"], ["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mActiveAdmin::Comment Pluck (11.4ms)[0m  [1m[34mSELECT DISTINCT "active_admin_comments"."resource_type" FROM "active_admin_comments" ORDER BY resource_type asc[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mActiveAdmin::Comment Pluck (2.2ms)[0m  [1m[34mSELECT DISTINCT "active_admin_comments"."author_type" FROM "active_admin_comments" ORDER BY author_type asc[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 53.5ms | Allocations: 28411)
+Completed 200 OK in 59ms (Views: 33.7ms | ActiveRecord: 21.0ms | Allocations: 30139)
+
+
+Started GET "/admin/posts" for 127.0.0.1 at 2024-04-14 17:08:25 +0300
+Processing by Admin::PostsController#index as HTML
+  [1m[36mAdminUser Load (0.7ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mPost Load (1.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (1.2ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (1.8ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 38.1ms | Allocations: 38166)
+Completed 200 OK in 47ms (Views: 34.2ms | ActiveRecord: 5.3ms | Allocations: 39849)
+
+
+Started GET "/admin/reddits" for 127.0.0.1 at 2024-04-14 17:08:25 +0300
+Processing by Admin::RedditsController#index as HTML
+  [1m[36mAdminUser Load (6.2ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mReddit Load (3.8ms)[0m  [1m[34mSELECT "reddits".* FROM "reddits" ORDER BY "reddits"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mReddit Count (6.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "reddits"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 77.4ms | Allocations: 86516)
+Completed 200 OK in 90ms (Views: 68.1ms | ActiveRecord: 16.0ms | Allocations: 88191)
+
+
+Started GET "/admin/topics" for 127.0.0.1 at 2024-04-14 17:08:26 +0300
+Processing by Admin::TopicsController#index as HTML
+  [1m[36mAdminUser Load (0.5ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mTopic Load (3.7ms)[0m  [1m[34mSELECT "topics".* FROM "topics" ORDER BY "topics"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mPost Load (1.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 28.4ms | Allocations: 30718)
+Completed 200 OK in 33ms (Views: 23.4ms | ActiveRecord: 5.9ms | Allocations: 32422)
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2024-04-14 17:08:26 +0300
+Processing by Admin::UsersController#index as HTML
+  [1m[36mAdminUser Load (3.5ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 28.0ms | Allocations: 31949)
+Completed 200 OK in 40ms (Views: 27.7ms | ActiveRecord: 4.4ms | Allocations: 33618)
+
+
+Started GET "/admin/comments" for 127.0.0.1 at 2024-04-14 17:08:27 +0300
+Processing by Admin::CommentsController#index as HTML
+  [1m[36mAdminUser Load (0.7ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mActiveAdmin::Comment Count (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1[0m  [["namespace", "admin"]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mActiveAdmin::Comment Load (1.0ms)[0m  [1m[34mSELECT "active_admin_comments".* FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1 ORDER BY "active_admin_comments"."id" desc LIMIT $2 OFFSET $3[0m  [["namespace", "admin"], ["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mActiveAdmin::Comment Pluck (2.9ms)[0m  [1m[34mSELECT DISTINCT "active_admin_comments"."resource_type" FROM "active_admin_comments" ORDER BY resource_type asc[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mActiveAdmin::Comment Pluck (1.6ms)[0m  [1m[34mSELECT DISTINCT "active_admin_comments"."author_type" FROM "active_admin_comments" ORDER BY author_type asc[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 37.3ms | Allocations: 28373)
+Completed 200 OK in 44ms (Views: 30.8ms | ActiveRecord: 7.6ms | Allocations: 30089)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2024-04-14 17:08:28 +0300
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (1.0ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/page/index.html.arb
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/page/index.html.arb (Duration: 9.6ms | Allocations: 14815)
+Completed 200 OK in 15ms (Views: 10.1ms | ActiveRecord: 1.0ms | Allocations: 16236)
+
+
+Started GET "/admin/admin_users/1" for 127.0.0.1 at 2024-04-14 17:15:46 +0300
+Processing by Admin::AdminUsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdminUser Load (0.7ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mAdminUser Load (0.3ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/show.html.arb
+  [1m[36mActiveAdmin::Comment Count (3.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = $1 AND "active_admin_comments"."resource_id" = $2 AND "active_admin_comments"."namespace" = $3[0m  [["resource_type", "AdminUser"], ["resource_id", 1], ["namespace", "admin"]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mActiveAdmin::Comment Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = $1 AND "active_admin_comments"."resource_id" = $2 AND "active_admin_comments"."namespace" = $3 LIMIT $4 OFFSET $5[0m  [["resource_type", "AdminUser"], ["resource_id", 1], ["namespace", "admin"], ["LIMIT", 1], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/show.html.arb (Duration: 28.0ms | Allocations: 37361)
+Completed 200 OK in 70ms (Views: 25.2ms | ActiveRecord: 21.3ms | Allocations: 47826)
+
+
+Started GET "/" for 127.0.0.1 at 2024-04-14 17:15:53 +0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mReddit Load (2.4ms)[0m  [1m[34mSELECT "reddits".* FROM "reddits" ORDER BY "reddits"."topic" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 15], ["OFFSET", 0]]
+  ↳ app/views/home/index.html.erb:6
+  [1m[36mReddit Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "reddits"[0m
+  ↳ app/views/home/index.html.erb:20
+  Rendered home/index.html.erb within layouts/application (Duration: 14.3ms | Allocations: 8580)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_navbar.html.erb:13
+  Rendered layouts/_navbar.html.erb (Duration: 6.6ms | Allocations: 4843)
+  Rendered layout layouts/application.html.erb (Duration: 28.3ms | Allocations: 20589)
+Completed 200 OK in 31ms (Views: 25.6ms | ActiveRecord: 4.4ms | Allocations: 22086)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2024-04-14 17:15:55 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mAdminUser Load (1.5ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mAdminUser Update (23.4ms)[0m  [1m[33mUPDATE "admin_users" SET "remember_created_at" = $1, "updated_at" = $2 WHERE "admin_users"."id" = $3[0m  [["remember_created_at", nil], ["updated_at", "2024-04-14 14:15:55.770891"], ["id", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 49ms (ActiveRecord: 32.2ms | Allocations: 8057)
+
+
+Started GET "/" for 127.0.0.1 at 2024-04-14 17:15:55 +0300
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mReddit Load (2.3ms)[0m  [1m[34mSELECT "reddits".* FROM "reddits" ORDER BY "reddits"."topic" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 15], ["OFFSET", 0]]
+  ↳ app/views/home/index.html.erb:6
+  [1m[36mReddit Count (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "reddits"[0m
+  ↳ app/views/home/index.html.erb:20
+  Rendered home/index.html.erb within layouts/application (Duration: 7.9ms | Allocations: 3715)
+  Rendered layouts/_navbar.html.erb (Duration: 0.9ms | Allocations: 283)
+  Rendered layout layouts/application.html.erb (Duration: 13.9ms | Allocations: 10710)
+Completed 200 OK in 15ms (Views: 10.5ms | ActiveRecord: 3.6ms | Allocations: 11121)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-04-14 17:15:56 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.7ms | Allocations: 475)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 8.1ms | Allocations: 3164)
+  Rendered layouts/_navbar.html.erb (Duration: 0.3ms | Allocations: 206)
+  Rendered layout layouts/application.html.erb (Duration: 15.7ms | Allocations: 10025)
+Completed 200 OK in 21ms (Views: 17.8ms | ActiveRecord: 0.0ms | Allocations: 11324)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-04-14 17:16:01 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@karazin.ua", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "admin@karazin.ua"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+Completed 401 Unauthorized in 13ms (ActiveRecord: 1.5ms | Allocations: 1757)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@karazin.ua", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | Allocations: 76)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1111)
+  Rendered layouts/_navbar.html.erb (Duration: 0.1ms | Allocations: 141)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 7840)
+Completed 200 OK in 291ms (Views: 5.7ms | ActiveRecord: 0.0ms | Allocations: 9109)
+
+
+Started GET "/admin/login" for 127.0.0.1 at 2024-04-14 17:16:44 +0300
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering layout /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/layouts/active_admin_logged_out.html.erb
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/devise/shared/_links.erb (Duration: 0.5ms | Allocations: 613)
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (Duration: 15.0ms | Allocations: 12198)
+  Rendered layout /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/layouts/active_admin_logged_out.html.erb (Duration: 23.7ms | Allocations: 23859)
+Completed 200 OK in 26ms (Views: 25.3ms | ActiveRecord: 0.0ms | Allocations: 25465)
+
+
+Started GET "/admin" for 127.0.0.1 at 2024-04-14 17:16:50 +0300
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 517)
+
+
+Started GET "/admin/login" for 127.0.0.1 at 2024-04-14 17:16:50 +0300
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering layout /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/layouts/active_admin_logged_out.html.erb
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/devise/shared/_links.erb (Duration: 0.1ms | Allocations: 95)
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (Duration: 3.8ms | Allocations: 5821)
+  Rendered layout /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/layouts/active_admin_logged_out.html.erb (Duration: 13.9ms | Allocations: 16623)
+Completed 200 OK in 16ms (Views: 14.4ms | ActiveRecord: 0.0ms | Allocations: 17342)
+
+
+Started POST "/admin/login" for 127.0.0.1 at 2024-04-14 17:16:56 +0300
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "admin_user"=>{"email"=>"admin@karazin.ua", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Login"}
+  [1m[36mAdminUser Load (0.9ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["email", "admin@karazin.ua"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mAdminUser Update (3.9ms)[0m  [1m[33mUPDATE "admin_users" SET "remember_created_at" = $1, "updated_at" = $2 WHERE "admin_users"."id" = $3[0m  [["remember_created_at", "2024-04-14 14:16:57.167198"], ["updated_at", "2024-04-14 14:16:57.167556"], ["id", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+Redirected to http://127.0.0.1:3000/admin
+Completed 303 See Other in 306ms (ActiveRecord: 11.6ms | Allocations: 5688)
+
+
+Started GET "/admin" for 127.0.0.1 at 2024-04-14 17:16:57 +0300
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (0.6ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/page/index.html.arb
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/page/index.html.arb (Duration: 11.6ms | Allocations: 15086)
+Completed 200 OK in 15ms (Views: 12.6ms | ActiveRecord: 0.6ms | Allocations: 16958)
+
+
+Started GET "/admin/admin_users/1" for 127.0.0.1 at 2024-04-14 17:17:02 +0300
+Processing by Admin::AdminUsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdminUser Load (0.8ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mAdminUser Load (1.5ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/show.html.arb
+  [1m[36mActiveAdmin::Comment Count (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = $1 AND "active_admin_comments"."resource_id" = $2 AND "active_admin_comments"."namespace" = $3[0m  [["resource_type", "AdminUser"], ["resource_id", 1], ["namespace", "admin"]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mActiveAdmin::Comment Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = $1 AND "active_admin_comments"."resource_id" = $2 AND "active_admin_comments"."namespace" = $3 LIMIT $4 OFFSET $5[0m  [["resource_type", "AdminUser"], ["resource_id", 1], ["namespace", "admin"], ["LIMIT", 1], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/show.html.arb (Duration: 30.9ms | Allocations: 25349)
+Completed 200 OK in 38ms (Views: 28.1ms | ActiveRecord: 5.5ms | Allocations: 27674)
+
+
+Started GET "/admin/admin_users/1/edit" for 127.0.0.1 at 2024-04-14 17:17:20 +0300
+Processing by Admin::AdminUsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdminUser Load (1.8ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mAdminUser Load (1.3ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/edit.html.arb
+  [1m[36mCACHE AdminUser Load (0.0ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/edit.html.arb (Duration: 26.7ms | Allocations: 23350)
+Completed 200 OK in 37ms (Views: 28.5ms | ActiveRecord: 3.1ms | Allocations: 25621)
+
+
+Started GET "/admin/admin_users/1/edit" for 127.0.0.1 at 2024-04-14 17:17:25 +0300
+Processing by Admin::AdminUsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdminUser Load (1.6ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mAdminUser Load (1.6ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/edit.html.arb
+  [1m[36mCACHE AdminUser Load (0.0ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/edit.html.arb (Duration: 18.8ms | Allocations: 22146)
+Completed 200 OK in 29ms (Views: 19.2ms | ActiveRecord: 3.2ms | Allocations: 24224)
+
+
+Started GET "/admin/admin_users" for 127.0.0.1 at 2024-04-14 17:19:47 +0300
+  
+NoMethodError (undefined method `validate' for #<ActiveAdmin::ResourceDSL:0x000000010756fe20 @config=#<ActiveAdmin::Resource:0x000000010751c1a8 @namespace=#<ActiveAdmin::Namespace:0x0000000106ea7278 @application=#<ActiveAdmin::Application:0x0000000101773b78 @namespaces=#<ActiveAdmin::Namespace::Store:0x0000000101773538 @namespaces={:admin=>#<ActiveAdmin::Namespace:0x0000000106ea7278 ...>}>, @settings=#<Class:0x0000000101772f98>, @namespace_settings=#<Class:0x0000000101759b88>, @stylesheets={"active_admin.css"=>{:media=>"all"}}, @javascripts={"active_admin.js"=>{}}>, @name="admin", @resources=#<ActiveAdmin::ResourceCollection:0x00000001073cd4c8 @collection={#<ActiveAdmin::Resource::Name:0x0000000107517360 @name="AdminUser", @klass=AdminUser(id: integer, email: string, encrypted_password: string, reset_password_token: string, reset_password_sent_at: datetime, remember_created_at: datetime, created_at: datetime, updated_at: datetime), @singular="admin_user", @plural="admin_users", @uncountable=false, @element="admin_user", @human="Admin user", @collection="admin_users", @param_key="admin_user", @i18n_key=:admin_user, @route_key="admin_users", @singular_route_key="admin_user">=>#<ActiveAdmin::Resource:0x000000010751c1a8 ...>}>, @menus=#<ActiveAdmin::MenuCollection:0x0000000106ea5770 @menus={}, @build_callbacks=[#<Proc:0x0000000106ea5680 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/namespace.rb:180>], @built=false>, @settings=#<Class:0x0000000106eefa00>>, @resource_class_name="::AdminUser", @options={}, @sort_order=nil, @member_actions=[], @collection_actions=[], @action_items=[#<ActiveAdmin::ActionItem:0x0000000107517d60 @name=:new, @options={:only=>[:index]}, @block=#<Proc:0x0000000107517ce8 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/action_items.rb:67>>, #<ActiveAdmin::ActionItem:0x0000000107517c20 @name=:edit, @options={:only=>[:show]}, @block=#<Proc:0x0000000107517bd0 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/action_items.rb:77>>, #<ActiveAdmin::ActionItem:0x0000000107517b58 @name=:destroy, @options={:only=>[:show]}, @block=#<Proc:0x0000000107517b08 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/action_items.rb:87>>], @paginate=true, @per_page=30, @max_per_page=10000, @sidebar_sections=[#<ActiveAdmin::SidebarSection:0x0000000107517720 @name="filters", @options={:only=>[:index], :if=>#<Proc:0x0000000107517770 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/filters/resource_extension.rb:168 (lambda)>}, @block=#<Proc:0x00000001075176d0 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/filters/resource_extension.rb:168>>, #<ActiveAdmin::Filters::ActiveSidebar:0x0000000107517630 @name="search_status", @options={:only=>[:index], :if=>#<Proc:0x00000001075175b8 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/filters/active_sidebar.rb:23 (lambda)>}, @block=nil>], @batch_actions={:destroy=>#<ActiveAdmin::BatchAction:0x00000001075173d8 @sym=:destroy, @title=#<Proc:0x0000000107517428 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:65>, @options={:priority=>100, :confirm=>#<Proc:0x00000001075174c8 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:61>, :if=>#<Proc:0x0000000107517478 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:62>}, @block=#<Proc:0x00000001075173b0 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:65>, @confirm=#<Proc:0x00000001075174c8 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:61>>}, @resource_name=#<ActiveAdmin::Resource::Name:0x0000000107517360 @name="AdminUser", @klass=AdminUser(id: integer, email: string, encrypted_password: string, reset_password_token: string, reset_password_sent_at: datetime, remember_created_at: datetime, created_at: datetime, updated_at: datetime), @singular="admin_user", @plural="admin_users", @uncountable=false, @element="admin_user", @human="Admin user", @collection="admin_users", @param_key="admin_user", @i18n_key=:admin_user, @route_key="admin_users", @singular_route_key="admin_user">, @controller=Admin::AdminUsersController, @dsl=#<ActiveAdmin::ResourceDSL:0x000000010756fe20 ...>, @page_presenters={:index=>{:table=>#<ActiveAdmin::PagePresenter:0x000000010756f7b8 @options={:as=>:table}, @block=#<Proc:0x000000010756f650 /Users/mama/RubymineProjects/MPP_UNI_2/app/admin/admin_users.rb:4>>}, :form=>#<ActiveAdmin::PagePresenter:0x000000010756dad0 @options={}, @block=#<Proc:0x000000010756da58 /Users/mama/RubymineProjects/MPP_UNI_2/app/admin/admin_users.rb:19>>}, @default_index=ActiveAdmin::Views::IndexAsTable, @filters={:email=>{}, :current_sign_in_at=>{}, :sign_in_count=>{}, :created_at=>{}}>>
+
+  validate :email_domain
+  ^^^^^^^^):
+  
+app/admin/admin_users.rb:28:in `block in <main>'
+app/admin/admin_users.rb:1:in `<main>'
+config/routes.rb:3:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/admin/admin_users/1" for 127.0.0.1 at 2024-04-14 17:19:50 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/admin_users/1"):
+  
+Started GET "/admin" for 127.0.0.1 at 2024-04-14 17:19:57 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin"):
+  
+Started GET "/admin" for 127.0.0.1 at 2024-04-14 17:23:06 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (0.5ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/page/index.html.arb
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/page/index.html.arb (Duration: 67.9ms | Allocations: 61349)
+Completed 200 OK in 131ms (Views: 72.5ms | ActiveRecord: 26.6ms | Allocations: 86275)
+
+
+Started GET "/admin/admin_users" for 127.0.0.1 at 2024-04-14 17:23:08 +0300
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (2.7ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mAdminUser Load (2.9ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" ORDER BY "admin_users"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 40.9ms | Allocations: 32497)
+Completed 200 OK in 58ms (Views: 41.0ms | ActiveRecord: 5.6ms | Allocations: 35850)
+
+
+Started GET "/admin/admin_users/new" for 127.0.0.1 at 2024-04-14 17:23:10 +0300
+Processing by Admin::AdminUsersController#new as HTML
+  [1m[36mAdminUser Load (0.8ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/new.html.arb
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/new.html.arb (Duration: 27.6ms | Allocations: 24340)
+Completed 200 OK in 36ms (Views: 29.7ms | ActiveRecord: 0.8ms | Allocations: 26557)
+
+
+Started POST "/admin/admin_users" for 127.0.0.1 at 2024-04-14 17:23:28 +0300
+Processing by Admin::AdminUsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "admin_user"=>{"email"=>"new_admin@kdas.dasdas", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Admin user"}
+  [1m[36mAdminUser Load (1.3ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mAdminUser Exists? (4.5ms)[0m  [1m[34mSELECT 1 AS one FROM "admin_users" WHERE "admin_users"."email" = $1 LIMIT $2[0m  [["email", "new_admin@kdas.dasdas"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/new.html.arb
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/new.html.arb (Duration: 14.6ms | Allocations: 22075)
+Completed 200 OK in 314ms (Views: 14.9ms | ActiveRecord: 8.9ms | Allocations: 30551)
+
+
+Started POST "/admin/admin_users" for 127.0.0.1 at 2024-04-14 17:23:40 +0300
+Processing by Admin::AdminUsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "admin_user"=>{"email"=>"new_admin@karazin.ua", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create Admin user"}
+  [1m[36mAdminUser Load (1.1ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mAdminUser Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "admin_users" WHERE "admin_users"."email" = $1 LIMIT $2[0m  [["email", "new_admin@karazin.ua"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/new.html.arb
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/new.html.arb (Duration: 22.7ms | Allocations: 23705)
+Completed 200 OK in 38ms (Views: 23.2ms | ActiveRecord: 4.9ms | Allocations: 29519)
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2024-04-14 17:27:36 +0300
+Processing by Admin::UsersController#index as HTML
+  [1m[36mAdminUser Load (7.2ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 37.6ms | Allocations: 35468)
+Completed 200 OK in 88ms (Views: 37.3ms | ActiveRecord: 30.1ms | Allocations: 38277)
+
+
+Started GET "/admin/posts" for 127.0.0.1 at 2024-04-14 18:14:59 +0300
+Processing by Admin::PostsController#index as HTML
+  [1m[36mAdminUser Load (1.8ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mPost Load (7.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (2.6ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (1.9ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 142.4ms | Allocations: 63450)
+Completed 200 OK in 261ms (Views: 116.6ms | ActiveRecord: 78.9ms | Allocations: 69316)
+
+
+Started GET "/admin/admin_users" for 127.0.0.1 at 2024-04-14 18:18:16 +0300
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (0.7ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mAdminUser Load (1.7ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" ORDER BY "admin_users"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 17.0ms | Allocations: 29115)
+Completed 200 OK in 40ms (Views: 16.8ms | ActiveRecord: 18.9ms | Allocations: 36073)
+
+
+Started GET "/admin/admin_users/1" for 127.0.0.1 at 2024-04-14 18:18:39 +0300
+  
+SyntaxError (/Users/mama/RubymineProjects/MPP_UNI_2/app/admin/admin_users.rb:11: syntax error, unexpected ':', expecting `end'
+    actions :
+            ^
+):
+  
+app/admin/admin_users.rb:11: syntax error, unexpected ':', expecting `end'
+config/routes.rb:3:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/admin/admin_users/1" for 127.0.0.1 at 2024-04-14 18:18:44 +0300
+Processing by Admin::AdminUsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdminUser Load (0.8ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mAdminUser Load (1.4ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/show.html.arb
+  [1m[36mActiveAdmin::Comment Count (3.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = $1 AND "active_admin_comments"."resource_id" = $2 AND "active_admin_comments"."namespace" = $3[0m  [["resource_type", "AdminUser"], ["resource_id", 1], ["namespace", "admin"]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mActiveAdmin::Comment Exists? (11.2ms)[0m  [1m[34mSELECT 1 AS one FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = $1 AND "active_admin_comments"."resource_id" = $2 AND "active_admin_comments"."namespace" = $3 LIMIT $4 OFFSET $5[0m  [["resource_type", "AdminUser"], ["resource_id", 1], ["namespace", "admin"], ["LIMIT", 1], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/show.html.arb (Duration: 42.3ms | Allocations: 37897)
+Completed 200 OK in 96ms (Views: 26.1ms | ActiveRecord: 30.2ms | Allocations: 45791)
+
+
+Started GET "/admin/posts" for 127.0.0.1 at 2024-04-14 18:20:19 +0300
+Processing by Admin::PostsController#index as HTML
+  [1m[36mAdminUser Load (1.3ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mPost Load (2.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (0.8ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 38.4ms | Allocations: 50493)
+Completed 200 OK in 64ms (Views: 33.0ms | ActiveRecord: 24.9ms | Allocations: 58167)
+
+
+Started GET "/admin/reddits" for 127.0.0.1 at 2024-04-14 18:20:24 +0300
+Processing by Admin::RedditsController#index as HTML
+  [1m[36mAdminUser Load (0.6ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mReddit Load (2.3ms)[0m  [1m[34mSELECT "reddits".* FROM "reddits" ORDER BY "reddits"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mReddit Count (2.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "reddits"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 61.1ms | Allocations: 71652)
+Completed 200 OK in 73ms (Views: 57.0ms | ActiveRecord: 10.4ms | Allocations: 74350)
+
+
+Started GET "/admin/posts" for 127.0.0.1 at 2024-04-14 18:20:59 +0300
+Processing by Admin::PostsController#index as HTML
+  [1m[36mAdminUser Load (0.5ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (0.4ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 33.0ms | Allocations: 43296)
+Completed 200 OK in 47ms (Views: 27.3ms | ActiveRecord: 14.7ms | Allocations: 50989)
+
+
+Started GET "/admin/posts" for 127.0.0.1 at 2024-04-14 18:22:03 +0300
+  
+NoMethodError (undefined method `column' for #<ActiveAdmin::ResourceDSL:0x0000000106ae4488 @config=#<ActiveAdmin::Resource:0x0000000106a7eb60 @namespace=#<ActiveAdmin::Namespace:0x0000000106b0d810 @application=#<ActiveAdmin::Application:0x000000010135adc0 @namespaces=#<ActiveAdmin::Namespace::Store:0x000000010135a398 @namespaces={:admin=>#<ActiveAdmin::Namespace:0x0000000106b0d810 ...>}>, @settings=#<Class:0x00000001013491d8>, @namespace_settings=#<Class:0x0000000101348e18>, @stylesheets={"active_admin.css"=>{:media=>"all"}}, @javascripts={"active_admin.js"=>{}}>, @name="admin", @resources=#<ActiveAdmin::ResourceCollection:0x00000001067e7528 @collection={#<ActiveAdmin::Resource::Name:0x00000001069e5410 @name="AdminUser", @klass=AdminUser(id: integer, email: string, encrypted_password: string, reset_password_token: string, reset_password_sent_at: datetime, remember_created_at: datetime, created_at: datetime, updated_at: datetime), @singular="admin_user", @plural="admin_users", @uncountable=false, @element="admin_user", @human="Admin user", @collection="admin_users", @param_key="admin_user", @i18n_key=:admin_user, @route_key="admin_users", @singular_route_key="admin_user">=>#<ActiveAdmin::Resource:0x00000001069e64f0 @namespace=#<ActiveAdmin::Namespace:0x0000000106b0d810 ...>, @resource_class_name="::AdminUser", @options={}, @sort_order=nil, @member_actions=[], @collection_actions=[], @action_items=[#<ActiveAdmin::ActionItem:0x00000001069e6180 @name=:new, @options={:only=>[:index]}, @block=#<Proc:0x00000001069e6130 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/action_items.rb:67>>, #<ActiveAdmin::ActionItem:0x00000001069e60b8 @name=:edit, @options={:only=>[:show]}, @block=#<Proc:0x00000001069e6068 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/action_items.rb:77>>, #<ActiveAdmin::ActionItem:0x00000001069e5ff0 @name=:destroy, @options={:only=>[:show]}, @block=#<Proc:0x00000001069e5fa0 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/action_items.rb:87>>], @paginate=true, @per_page=30, @max_per_page=10000, @sidebar_sections=[#<ActiveAdmin::SidebarSection:0x00000001069e5a78 @name="filters", @options={:only=>[:index], :if=>#<Proc:0x00000001069e5b18 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/filters/resource_extension.rb:168 (lambda)>}, @block=#<Proc:0x00000001069e59d8 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/filters/resource_extension.rb:168>>, #<ActiveAdmin::Filters::ActiveSidebar:0x00000001069e5938 @name="search_status", @options={:only=>[:index], :if=>#<Proc:0x00000001069e58e8 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/filters/active_sidebar.rb:23 (lambda)>}, @block=nil>], @batch_actions={:destroy=>#<ActiveAdmin::BatchAction:0x00000001069e5550 @sym=:destroy, @title=#<Proc:0x00000001069e56b8 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:65>, @options={:priority=>100, :confirm=>#<Proc:0x00000001069e57d0 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:61>, :if=>#<Proc:0x00000001069e57a8 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:62>}, @block=#<Proc:0x00000001069e5500 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:65>, @confirm=#<Proc:0x00000001069e57d0 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:61>>}, @resource_name=#<ActiveAdmin::Resource::Name:0x00000001069e5410 @name="AdminUser", @klass=AdminUser(id: integer, email: string, encrypted_password: string, reset_password_token: string, reset_password_sent_at: datetime, remember_created_at: datetime, created_at: datetime, updated_at: datetime), @singular="admin_user", @plural="admin_users", @uncountable=false, @element="admin_user", @human="Admin user", @collection="admin_users", @param_key="admin_user", @i18n_key=:admin_user, @route_key="admin_users", @singular_route_key="admin_user">, @controller=Admin::AdminUsersController, @dsl=#<ActiveAdmin::ResourceDSL:0x0000000106a34ba0 @config=#<ActiveAdmin::Resource:0x00000001069e64f0 ...>>, @page_presenters={:index=>{:table=>#<ActiveAdmin::PagePresenter:0x0000000106a348d0 @options={:as=>:table}, @block=#<Proc:0x0000000106a34858 /Users/mama/RubymineProjects/MPP_UNI_2/app/admin/admin_users.rb:4>>}, :form=>#<ActiveAdmin::PagePresenter:0x0000000106a2fec0 @options={}, @block=#<Proc:0x0000000106a2fe70 /Users/mama/RubymineProjects/MPP_UNI_2/app/admin/admin_users.rb:19>>}, @default_index=ActiveAdmin::Views::IndexAsTable, @filters={:email=>{}, :current_sign_in_at=>{}, :sign_in_count=>{}, :created_at=>{}}>, #<ActiveAdmin::Resource::Name:0x0000000106a2e778 @name="Dashboard", @klass=nil, @singular="dashboard", @plural="dashboards", @uncountable=false, @element="dashboard", @human="Dashboard", @collection="dashboards", @param_key="dashboard", @i18n_key=:dashboard, @route_key="dashboards", @singular_route_key="dashboard">=>#<ActiveAdmin::Page:0x0000000106a2e868 @namespace=#<ActiveAdmin::Namespace:0x0000000106b0d810 ...>, @name="Dashboard", @options={}, @page_actions=[], @resource_name=#<ActiveAdmin::Resource::Name:0x0000000106a2e778 @name="Dashboard", @klass=nil, @singular="dashboard", @plural="dashboards", @uncountable=false, @element="dashboard", @human="Dashboard", @collection="dashboards", @param_key="dashboard", @i18n_key=:dashboard, @route_key="dashboards", @singular_route_key="dashboard">, @controller=Admin::DashboardController, @include_in_menu=true, @navigation_menu_name=nil, @menu_item_options={:id=>#<ActiveAdmin::Resource::Name:0x0000000106a2e778 @name="Dashboard", @klass=nil, @singular="dashboard", @plural="dashboards", @uncountable=false, @element="dashboard", @human="Dashboard", @collection="dashboards", @param_key="dashboard", @i18n_key=:dashboard, @route_key="dashboards", @singular_route_key="dashboard">, :label=>#<Proc:0x0000000106a9dce0 /Users/mama/RubymineProjects/MPP_UNI_2/app/admin/dashboard.rb:3>, :url=>#<Proc:0x0000000106a9da88 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/menu.rb:31>, :if=>#<Proc:0x0000000106a9da38 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/menu.rb:32>, :priority=>1}, @page_presenters={:index=>#<ActiveAdmin::PagePresenter:0x0000000106a9d808 @options={:title=>#<Proc:0x0000000106a9d8d0 /Users/mama/RubymineProjects/MPP_UNI_2/app/admin/dashboard.rb:5>}, @block=#<Proc:0x0000000106a9d7e0 /Users/mama/RubymineProjects/MPP_UNI_2/app/admin/dashboard.rb:5>>}>, #<ActiveAdmin::Resource::Name:0x0000000106a7e098 @name="Post", @klass=Post(id: integer, img_link: string, title: string, body: text, replies: integer, likes: integer, dislikes: integer, topic_id: integer, created_at: datetime, updated_at: datetime), @singular="post", @plural="posts", @uncountable=false, @element="post", @human="Post", @collection="posts", @param_key="post", @i18n_key=:post, @route_key="posts", @singular_route_key="post">=>#<ActiveAdmin::Resource:0x0000000106a7eb60 ...>}>, @menus=#<ActiveAdmin::MenuCollection:0x0000000106b57ac8 @menus={}, @build_callbacks=[#<Proc:0x0000000106b57820 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/namespace.rb:180>], @built=false>, @settings=#<Class:0x0000000106b55840>>, @resource_class_name="::Post", @options={}, @sort_order=nil, @member_actions=[], @collection_actions=[], @action_items=[#<ActiveAdmin::ActionItem:0x0000000106a7e980 @name=:new, @options={:only=>[:index]}, @block=#<Proc:0x0000000106a7e930 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/action_items.rb:67>>, #<ActiveAdmin::ActionItem:0x0000000106a7e8b8 @name=:edit, @options={:only=>[:show]}, @block=#<Proc:0x0000000106a7e868 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/action_items.rb:77>>, #<ActiveAdmin::ActionItem:0x0000000106a7e7f0 @name=:destroy, @options={:only=>[:show]}, @block=#<Proc:0x0000000106a7e7a0 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/action_items.rb:87>>], @paginate=true, @per_page=30, @max_per_page=10000, @sidebar_sections=[#<ActiveAdmin::SidebarSection:0x0000000106a7e480 @name="filters", @options={:only=>[:index], :if=>#<Proc:0x0000000106a7e4f8 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/filters/resource_extension.rb:168 (lambda)>}, @block=#<Proc:0x0000000106a7e430 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/filters/resource_extension.rb:168>>, #<ActiveAdmin::Filters::ActiveSidebar:0x0000000106a7e3b8 @name="search_status", @options={:only=>[:index], :if=>#<Proc:0x0000000106a7e340 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/filters/active_sidebar.rb:23 (lambda)>}, @block=nil>], @batch_actions={:destroy=>#<ActiveAdmin::BatchAction:0x0000000106a7e188 @sym=:destroy, @title=#<Proc:0x0000000106a7e1d8 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:65>, @options={:priority=>100, :confirm=>#<Proc:0x0000000106a7e250 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:61>, :if=>#<Proc:0x0000000106a7e228 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:62>}, @block=#<Proc:0x0000000106a7e160 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:65>, @confirm=#<Proc:0x0000000106a7e250 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:61>>}, @resource_name=#<ActiveAdmin::Resource::Name:0x0000000106a7e098 @name="Post", @klass=Post(id: integer, img_link: string, title: string, body: text, replies: integer, likes: integer, dislikes: integer, topic_id: integer, created_at: datetime, updated_at: datetime), @singular="post", @plural="posts", @uncountable=false, @element="post", @human="Post", @collection="posts", @param_key="post", @i18n_key=:post, @route_key="posts", @singular_route_key="post">, @controller=Admin::PostsController, @dsl=#<ActiveAdmin::ResourceDSL:0x0000000106ae4488 ...>>>
+
+  column :all
+  ^^^^^^):
+  
+app/admin/posts.rb:11:in `block in <main>'
+app/admin/posts.rb:1:in `<main>'
+config/routes.rb:3:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/admin/posts" for 127.0.0.1 at 2024-04-14 18:22:13 +0300
+  
+NoMethodError (undefined method `columns' for #<ActiveAdmin::ResourceDSL:0x0000000106cad238 @config=#<ActiveAdmin::Resource:0x0000000106a7eb60 @namespace=#<ActiveAdmin::Namespace:0x0000000106b0d810 @application=#<ActiveAdmin::Application:0x000000010135adc0 @namespaces=#<ActiveAdmin::Namespace::Store:0x000000010135a398 @namespaces={:admin=>#<ActiveAdmin::Namespace:0x0000000106b0d810 ...>}>, @settings=#<Class:0x00000001013491d8>, @namespace_settings=#<Class:0x0000000101348e18>, @stylesheets={"active_admin.css"=>{:media=>"all"}}, @javascripts={"active_admin.js"=>{}}>, @name="admin", @resources=#<ActiveAdmin::ResourceCollection:0x00000001067e7528 @collection={#<ActiveAdmin::Resource::Name:0x00000001069e5410 @name="AdminUser", @klass=AdminUser(id: integer, email: string, encrypted_password: string, reset_password_token: string, reset_password_sent_at: datetime, remember_created_at: datetime, created_at: datetime, updated_at: datetime), @singular="admin_user", @plural="admin_users", @uncountable=false, @element="admin_user", @human="Admin user", @collection="admin_users", @param_key="admin_user", @i18n_key=:admin_user, @route_key="admin_users", @singular_route_key="admin_user">=>#<ActiveAdmin::Resource:0x00000001069e64f0 @namespace=#<ActiveAdmin::Namespace:0x0000000106b0d810 ...>, @resource_class_name="::AdminUser", @options={}, @sort_order=nil, @member_actions=[], @collection_actions=[], @action_items=[#<ActiveAdmin::ActionItem:0x00000001069e6180 @name=:new, @options={:only=>[:index]}, @block=#<Proc:0x00000001069e6130 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/action_items.rb:67>>, #<ActiveAdmin::ActionItem:0x00000001069e60b8 @name=:edit, @options={:only=>[:show]}, @block=#<Proc:0x00000001069e6068 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/action_items.rb:77>>, #<ActiveAdmin::ActionItem:0x00000001069e5ff0 @name=:destroy, @options={:only=>[:show]}, @block=#<Proc:0x00000001069e5fa0 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/action_items.rb:87>>], @paginate=true, @per_page=30, @max_per_page=10000, @sidebar_sections=[#<ActiveAdmin::SidebarSection:0x00000001069e5a78 @name="filters", @options={:only=>[:index], :if=>#<Proc:0x00000001069e5b18 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/filters/resource_extension.rb:168 (lambda)>}, @block=#<Proc:0x00000001069e59d8 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/filters/resource_extension.rb:168>>, #<ActiveAdmin::Filters::ActiveSidebar:0x00000001069e5938 @name="search_status", @options={:only=>[:index], :if=>#<Proc:0x00000001069e58e8 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/filters/active_sidebar.rb:23 (lambda)>}, @block=nil>], @batch_actions={:destroy=>#<ActiveAdmin::BatchAction:0x00000001069e5550 @sym=:destroy, @title=#<Proc:0x00000001069e56b8 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:65>, @options={:priority=>100, :confirm=>#<Proc:0x00000001069e57d0 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:61>, :if=>#<Proc:0x00000001069e57a8 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:62>}, @block=#<Proc:0x00000001069e5500 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:65>, @confirm=#<Proc:0x00000001069e57d0 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:61>>}, @resource_name=#<ActiveAdmin::Resource::Name:0x00000001069e5410 @name="AdminUser", @klass=AdminUser(id: integer, email: string, encrypted_password: string, reset_password_token: string, reset_password_sent_at: datetime, remember_created_at: datetime, created_at: datetime, updated_at: datetime), @singular="admin_user", @plural="admin_users", @uncountable=false, @element="admin_user", @human="Admin user", @collection="admin_users", @param_key="admin_user", @i18n_key=:admin_user, @route_key="admin_users", @singular_route_key="admin_user">, @controller=Admin::AdminUsersController, @dsl=#<ActiveAdmin::ResourceDSL:0x0000000106c3ff58 @config=#<ActiveAdmin::Resource:0x00000001069e64f0 ...>>, @page_presenters={:index=>{:table=>#<ActiveAdmin::PagePresenter:0x0000000106c3fd28 @options={:as=>:table}, @block=#<Proc:0x0000000106c3fc60 /Users/mama/RubymineProjects/MPP_UNI_2/app/admin/admin_users.rb:4>>}, :form=>#<ActiveAdmin::PagePresenter:0x0000000106c3f508 @options={}, @block=#<Proc:0x0000000106c3f4e0 /Users/mama/RubymineProjects/MPP_UNI_2/app/admin/admin_users.rb:19>>}, @default_index=ActiveAdmin::Views::IndexAsTable, @filters={:email=>{}, :current_sign_in_at=>{}, :sign_in_count=>{}, :created_at=>{}}>, #<ActiveAdmin::Resource::Name:0x0000000106a2e778 @name="Dashboard", @klass=nil, @singular="dashboard", @plural="dashboards", @uncountable=false, @element="dashboard", @human="Dashboard", @collection="dashboards", @param_key="dashboard", @i18n_key=:dashboard, @route_key="dashboards", @singular_route_key="dashboard">=>#<ActiveAdmin::Page:0x0000000106a2e868 @namespace=#<ActiveAdmin::Namespace:0x0000000106b0d810 ...>, @name="Dashboard", @options={}, @page_actions=[], @resource_name=#<ActiveAdmin::Resource::Name:0x0000000106a2e778 @name="Dashboard", @klass=nil, @singular="dashboard", @plural="dashboards", @uncountable=false, @element="dashboard", @human="Dashboard", @collection="dashboards", @param_key="dashboard", @i18n_key=:dashboard, @route_key="dashboards", @singular_route_key="dashboard">, @controller=Admin::DashboardController, @include_in_menu=true, @navigation_menu_name=nil, @menu_item_options={:id=>#<ActiveAdmin::Resource::Name:0x0000000106a2e778 @name="Dashboard", @klass=nil, @singular="dashboard", @plural="dashboards", @uncountable=false, @element="dashboard", @human="Dashboard", @collection="dashboards", @param_key="dashboard", @i18n_key=:dashboard, @route_key="dashboards", @singular_route_key="dashboard">, :label=>#<Proc:0x0000000106c3d208 /Users/mama/RubymineProjects/MPP_UNI_2/app/admin/dashboard.rb:3>, :url=>#<Proc:0x0000000106c3d118 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/menu.rb:31>, :if=>#<Proc:0x0000000106c3d0f0 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/menu.rb:32>, :priority=>1}, @page_presenters={:index=>#<ActiveAdmin::PagePresenter:0x0000000106c3ce98 @options={:title=>#<Proc:0x0000000106c3d000 /Users/mama/RubymineProjects/MPP_UNI_2/app/admin/dashboard.rb:5>}, @block=#<Proc:0x0000000106c3ce20 /Users/mama/RubymineProjects/MPP_UNI_2/app/admin/dashboard.rb:5>>}>, #<ActiveAdmin::Resource::Name:0x0000000106a7e098 @name="Post", @klass=Post(id: integer, img_link: string, title: string, body: text, replies: integer, likes: integer, dislikes: integer, topic_id: integer, created_at: datetime, updated_at: datetime), @singular="post", @plural="posts", @uncountable=false, @element="post", @human="Post", @collection="posts", @param_key="post", @i18n_key=:post, @route_key="posts", @singular_route_key="post">=>#<ActiveAdmin::Resource:0x0000000106a7eb60 ...>}>, @menus=#<ActiveAdmin::MenuCollection:0x0000000106b57ac8 @menus={}, @build_callbacks=[#<Proc:0x0000000106b57820 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/namespace.rb:180>], @built=false>, @settings=#<Class:0x0000000106b55840>>, @resource_class_name="::Post", @options={}, @sort_order=nil, @member_actions=[], @collection_actions=[], @action_items=[#<ActiveAdmin::ActionItem:0x0000000106a7e980 @name=:new, @options={:only=>[:index]}, @block=#<Proc:0x0000000106a7e930 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/action_items.rb:67>>, #<ActiveAdmin::ActionItem:0x0000000106a7e8b8 @name=:edit, @options={:only=>[:show]}, @block=#<Proc:0x0000000106a7e868 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/action_items.rb:77>>, #<ActiveAdmin::ActionItem:0x0000000106a7e7f0 @name=:destroy, @options={:only=>[:show]}, @block=#<Proc:0x0000000106a7e7a0 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/resource/action_items.rb:87>>], @paginate=true, @per_page=30, @max_per_page=10000, @sidebar_sections=[#<ActiveAdmin::SidebarSection:0x0000000106a7e480 @name="filters", @options={:only=>[:index], :if=>#<Proc:0x0000000106a7e4f8 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/filters/resource_extension.rb:168 (lambda)>}, @block=#<Proc:0x0000000106a7e430 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/filters/resource_extension.rb:168>>, #<ActiveAdmin::Filters::ActiveSidebar:0x0000000106a7e3b8 @name="search_status", @options={:only=>[:index], :if=>#<Proc:0x0000000106a7e340 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/filters/active_sidebar.rb:23 (lambda)>}, @block=nil>], @batch_actions={:destroy=>#<ActiveAdmin::BatchAction:0x0000000106a7e188 @sym=:destroy, @title=#<Proc:0x0000000106a7e1d8 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:65>, @options={:priority=>100, :confirm=>#<Proc:0x0000000106a7e250 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:61>, :if=>#<Proc:0x0000000106a7e228 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:62>}, @block=#<Proc:0x0000000106a7e160 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:65>, @confirm=#<Proc:0x0000000106a7e250 /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/lib/active_admin/batch_actions/resource_extension.rb:61>>}, @resource_name=#<ActiveAdmin::Resource::Name:0x0000000106a7e098 @name="Post", @klass=Post(id: integer, img_link: string, title: string, body: text, replies: integer, likes: integer, dislikes: integer, topic_id: integer, created_at: datetime, updated_at: datetime), @singular="post", @plural="posts", @uncountable=false, @element="post", @human="Post", @collection="posts", @param_key="post", @i18n_key=:post, @route_key="posts", @singular_route_key="post">, @controller=Admin::PostsController, @dsl=#<ActiveAdmin::ResourceDSL:0x0000000106cad238 ...>>>
+
+  columns :all
+  ^^^^^^^):
+  
+app/admin/posts.rb:11:in `block in <main>'
+app/admin/posts.rb:1:in `<main>'
+config/routes.rb:3:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/admin/posts" for 127.0.0.1 at 2024-04-14 18:22:32 +0300
+Processing by Admin::PostsController#index as HTML
+  [1m[36mAdminUser Load (0.8ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mPost Load (4.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (0.6ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 39.2ms | Allocations: 43306)
+Completed 200 OK in 65ms (Views: 26.3ms | ActiveRecord: 33.8ms | Allocations: 51004)
+
+
+Started GET "/admin/posts" for 127.0.0.1 at 2024-04-14 18:22:41 +0300
+Processing by Admin::PostsController#index as HTML
+  [1m[36mAdminUser Load (1.6ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (1.0ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 36.4ms | Allocations: 50750)
+Completed 200 OK in 57ms (Views: 25.3ms | ActiveRecord: 26.6ms | Allocations: 58433)
+
+
+Started GET "/admin/posts" for 127.0.0.1 at 2024-04-14 18:23:58 +0300
+Processing by Admin::PostsController#index as HTML
+  [1m[36mAdminUser Load (1.6ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mPost Load (3.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (0.6ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 41.4ms | Allocations: 46114)
+Completed 200 OK in 68ms (Views: 33.2ms | ActiveRecord: 29.4ms | Allocations: 53736)
+
+
+Started GET "/admin/posts" for 127.0.0.1 at 2024-04-14 18:24:11 +0300
+Processing by Admin::PostsController#index as HTML
+  [1m[36mAdminUser Load (0.5ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (1.2ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 34.7ms | Allocations: 46483)
+Completed 200 OK in 54ms (Views: 23.3ms | ActiveRecord: 22.6ms | Allocations: 54118)
+
+
+Started GET "/admin/posts" for 127.0.0.1 at 2024-04-14 18:24:19 +0300
+Processing by Admin::PostsController#index as HTML
+  [1m[36mAdminUser Load (0.2ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendering /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  [1m[36mTopic Load (0.3ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  ↳ app/controllers/application_controller.rb:9:in `switch_locale'
+  Rendered /Users/mama/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-3.2.0/app/views/active_admin/resource/index.html.arb (Duration: 24.7ms | Allocations: 46894)
+Completed 200 OK in 34ms (Views: 23.2ms | ActiveRecord: 6.3ms | Allocations: 54584)
+
+
