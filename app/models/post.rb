@@ -8,6 +8,6 @@ class Post < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["body", "created_at", "dislikes", "id", "id_value", "img_link", "likes", "replies", "title", "topic_id", "updated_at"]
+    ["body", "created_at", "dislikes", "id", "id_value", "img_link", "likes", "replies", "title", "topic_id", "updated_at", "is_hidden"]
   end
 end
