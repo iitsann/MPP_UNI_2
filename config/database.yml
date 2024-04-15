@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: <%= ENV['DATABASE_NAME'] || "forum_db" %>
+  username: <%= ENV['DATABASE_USER'] || "forum_db" %>
+  password: <%= ENV['DATABASE_PASSWORD'] || "forum_db" %>
+  port: <%= ENV['DATABASE_PORT'] || "6666" %>
+  host: <%= ENV['DATABASE_HOST'] || "127.0.0.1" %>
+development:
+  <<: *default
+  port: 6666
+test:
+  <<: *default
+  database: forum_test
+  port: 6666
+production:
+  <<: *default
+  database: forum_production
+  username: forum_db
+  password: <%= ENV['FORUM_DATABASE_PASSWORD'] %>

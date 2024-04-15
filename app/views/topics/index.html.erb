@@ -1,0 +1,14 @@
+<div class="container mt-4">
+  <h1>List of topics</h1>
+  <div class="text-center mb-4">
+    <%= link_to "New Topic", new_topic_path, class: "btn btn-primary" %>
+  </div>
+  <% @topics.each do |topic| %>
+    <div class="mb-3">
+      <%= link_to topic.name, topic_path(topic) %>
+      <small class="text-muted">
+        (Posts: <%= topic.posts.count %>)
+      </small>
+    </div>
+  <% end %>
+</div>

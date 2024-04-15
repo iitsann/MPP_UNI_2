@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Reddits</h1>
+
+<div class="row">
+  <% @reddits.each do |reddit| %>
+    <div class="col-md-4 mb-4">
+      <div class="card d-flex flex-column h-100">
+        <div class="card-body">
+          <h5 class="card-title"><%= reddit.topic %></h5>
+          <p class="card-text"><%= reddit.subreddit %></p>
+          <a class="card-text" target="_blank" href=<%= reddit.link %>><%= reddit.link %></a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="d-flex justify-content-center mt-3 mb-10">
+  <%= paginate @reddits %>
+</div>

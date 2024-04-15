@@ -1,0 +1,14 @@
+<p class="text-success"><%= notice %></p>
+
+<% if current_user&.is_banned %>
+  <h1>You can't create topics, your account is banned</h1>
+<% elsif !current_user %>
+  <h1>You have to sign in/sign up edit a topic</h1>
+<% else %>
+  <%= render "form", topic: @topic %>
+<% end %>
+
+<div class="d-flex justify-content-between align-items-center">
+  <%= link_to "Back to topics", topics_path, class: "btn btn-secondary" %>
+  <%= button_to "Destroy this topic", topic_path(@topic), method: :delete, class: "btn btn-danger" %>
+</div>

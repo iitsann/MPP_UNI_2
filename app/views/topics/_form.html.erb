@@ -1,0 +1,23 @@
+<%= form_with(model: topic, local: true, class: "form-horizontal", style: "font-size: 1.5em;") do |form| %>
+  <% if topic.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
+      <ul>
+        <% topic.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= form.label :name, class: "control-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group mt-3">
+    <%= form.label :description, class: "control-label" %>
+    <%= form.text_area :description, class: "form-control" %>
+  </div>
+  <div class="form-group mt-3">
+    <%= form.submit "Create Topic", class: "btn btn-primary" %>
+  </div>
+<% end %>
