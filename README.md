@@ -2,7 +2,7 @@
 
 ## APP SET UP
 
-* Set up database::
+* Set up database:
     ```
     docker-compose up -d
     ```
