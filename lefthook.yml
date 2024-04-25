@@ -1,0 +1,12 @@
+pre-commit:
+  commands:
+    rubocop:
+      run: 'bundle exec rubocop --parallel'
+      files: 'app/**/*.rb'
+
+commit-msg:
+  parallel: true
+  commands:
+    validate-commit-msg:
+      run: './validate_commit_msg.sh $1'
+      files: COMMIT_EDITMSG

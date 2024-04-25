@@ -40,6 +40,9 @@ gem 'open-uri'
 # Pagination
 gem 'kaminari'
 
+# Rubocop
+gem 'rubocop', '~> 1.63', require: false
+gem 'lefthook', require: false
 # Active Admin
 gem "activeadmin"
 
