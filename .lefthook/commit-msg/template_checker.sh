@@ -1,3 +1,4 @@
+INPUT_FILE=$1
 START_LINE=`head -n1 $INPUT_FILE`
 PATTERN="^TASK: .*"
 if ! [[ "$START_LINE" =~ $PATTERN ]]; then
