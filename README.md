@@ -18,8 +18,9 @@
     ```
     bin/rails server
     ```
-  
+
 ## Scaffold
+
 * After creating the tables with scaffold you need to do the migration:
    ```
     bin/rails db:migrate

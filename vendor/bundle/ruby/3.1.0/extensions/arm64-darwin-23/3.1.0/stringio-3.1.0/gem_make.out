@@ -1,0 +1,15 @@
+current directory: /Users/mama/RubymineProjects/MPP_UNI_2/vendor/bundle/ruby/3.1.0/gems/stringio-3.1.0/ext/stringio
+/Users/mama/.rbenv/versions/3.1.2/bin/ruby -I /Users/mama/.rbenv/versions/3.1.2/lib/ruby/3.1.0 -r ./siteconf20240414-54670-8o7vf3.rb extconf.rb
+creating Makefile
+
+current directory: /Users/mama/RubymineProjects/MPP_UNI_2/vendor/bundle/ruby/3.1.0/gems/stringio-3.1.0/ext/stringio
+make DESTDIR\= clean
+
+current directory: /Users/mama/RubymineProjects/MPP_UNI_2/vendor/bundle/ruby/3.1.0/gems/stringio-3.1.0/ext/stringio
+make DESTDIR\=
+compiling stringio.c
+linking shared-object stringio.bundle
+
+current directory: /Users/mama/RubymineProjects/MPP_UNI_2/vendor/bundle/ruby/3.1.0/gems/stringio-3.1.0/ext/stringio
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 stringio.bundle ./.gem.20240414-54670-faqajf

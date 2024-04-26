@@ -1,0 +1,15 @@
+current directory: /Users/mama/RubymineProjects/MPP_UNI_2/vendor/bundle/ruby/3.1.0/gems/racc-1.7.3/ext/racc/cparse
+/Users/mama/.rbenv/versions/3.1.2/bin/ruby -I /Users/mama/.rbenv/versions/3.1.2/lib/ruby/3.1.0 -r ./siteconf20240414-54670-xgk10u.rb extconf.rb
+creating Makefile
+
+current directory: /Users/mama/RubymineProjects/MPP_UNI_2/vendor/bundle/ruby/3.1.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= clean
+
+current directory: /Users/mama/RubymineProjects/MPP_UNI_2/vendor/bundle/ruby/3.1.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\=
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+
+current directory: /Users/mama/RubymineProjects/MPP_UNI_2/vendor/bundle/ruby/3.1.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 cparse.bundle ./.gem.20240414-54670-ykfute/racc

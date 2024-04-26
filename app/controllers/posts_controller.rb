@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_post, only: %i[show edit update destroy]
+  before_action :check_ban, only: %i[create update like dislike]
 
   # GET /posts or /posts.json
   def index
@@ -7,8 +8,7 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1 or /posts/1.json
-  def show
-  end
+  def show; end
 
   # GET /posts/new
   def new
@@ -16,8 +16,7 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /posts or /posts.json
   def create
@@ -73,13 +72,20 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def post_params
-      params.require(:post).permit(:topic_id, :replies, :img_link, :title, :body, :likes, :dislikes)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def post_params
+    params.require(:post).permit(:topic_id, :replies, :img_link, :title, :body, :likes, :dislikes)
+  end
+
+  def check_ban
+    return unless current_user.is_banned
+
+    redirect_to root_path, alert: "Your account is banned. You cannot perform this action."
+  end
 end
