@@ -1,12 +1,10 @@
 pre-commit:
   commands:
     rubocop:
-      run: 'bundle exec rubocop --parallel'
-      files: 'app/**/*.rb'
+      glob: "app/**/*.{rb,erb}"
+      run: 'bundle exec rubocop --force-exclusion {all_files}'
 
 commit-msg:
-  parallel: true
-  commands:
-    validate-commit-msg:
-      run: './validate_commit_msg.sh $1'
-      files: COMMIT_EDITMSG
+  scripts:
+    "template_checker":
+      runner: bash

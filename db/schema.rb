@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_14_164731) do
+ActiveRecord::Schema[7.1].define(version: 20_240_414_164_731) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,9 +23,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_14_164731) do
     t.bigint "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
+    t.index %w[author_type author_id], name: "index_active_admin_comments_on_author"
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
-    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
+    t.index %w[resource_type resource_id], name: "index_active_admin_comments_on_resource"
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -50,7 +50,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_14_164731) do
     t.bigint "topic_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_hidden", default: false
     t.index ["topic_id"], name: "index_posts_on_topic_id"
   end
 

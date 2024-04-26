@@ -17,7 +17,7 @@ class RedditsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create reddit" do
     assert_difference("Reddit.count") do
-      post reddits_url, params: { reddit: { link: @reddit.link, subreddit: @reddit.subreddit, topic: @reddit.topic } }
+      post reddits_url, params: {reddit: {link: @reddit.link, subreddit: @reddit.subreddit, topic: @reddit.topic}}
     end
 
     assert_redirected_to reddit_url(Reddit.last)
@@ -34,7 +34,8 @@ class RedditsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update reddit" do
-    patch reddit_url(@reddit), params: { reddit: { link: @reddit.link, subreddit: @reddit.subreddit, topic: @reddit.topic } }
+    patch reddit_url(@reddit),
+          params: {reddit: {link: @reddit.link, subreddit: @reddit.subreddit, topic: @reddit.topic}}
     assert_redirected_to reddit_url(@reddit)
   end
 
