@@ -5,14 +5,15 @@
       <%= post.topic.name %>
     </p>
 
+    <% if post.image.attached? %>
+      <div class="card-body">
+        <%= image_tag post.image, class: "img-fluid"  %>
+      </div>
+    <% end %>
+
     <p class="card-text">
       <strong>Replies:</strong>
       <%= post.replies %>
-    </p>
-
-    <p class="card-text">
-      <strong>Img link:</strong>
-      <%= post.img_link %>
     </p>
 
     <p class="card-title">

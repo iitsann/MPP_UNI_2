@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  after_create :create_profile
+  has_one :profile
+  has_many :posts
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :email, :password, presence: true
@@ -9,5 +10,9 @@ class User < ApplicationRecord
   def self.ransackable_attributes(_auth_object=nil)
     %w[created_at email encrypted_password id id_value remember_created_at reset_password_sent_at
        reset_password_token updated_at is_banned]
+  end
+
+  def create_profile
+    Profile.create(user: self)
   end
 end

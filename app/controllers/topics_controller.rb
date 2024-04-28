@@ -8,7 +8,9 @@ class TopicsController < ApplicationController
   end
 
   # GET /topics/1 or /topics/1.json
-  def show; end
+  def show
+    @topic = Topic.find(params[:id])
+  end
 
   # GET /topics/new
   def new
@@ -48,11 +50,12 @@ class TopicsController < ApplicationController
 
   # DELETE /topics/1 or /topics/1.json
   def destroy
-    @topic.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to topics_url, notice: "Topic was successfully destroyed." }
-      format.json { head :no_content }
+    @topic = Topic.find(params[:id])
+    if @topic.posts.exists?
+      redirect_to topic_url(@topic), notice: 'Cannot delete topic with existing posts.'
+    else
+      @topic.destroy
+      redirect_to topics_url, notice: 'Topic was successfully destroyed.'
     end
   end
 

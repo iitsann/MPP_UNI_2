@@ -1,0 +1,21 @@
+<div id="<%= dom_id hobby %>" class="mb-3">
+  <p>
+    <strong>Name:</strong>
+    <%= hobby.name %>
+  </p>
+  <% profile_ids = hobby.profile_ids.present? ? hobby.profile_ids.split(',').map(&:strip) : [] %>
+  <% if profile_ids.any? %>
+    <h3>Profiles with this hobby:</h3>
+    <ul>
+      <% profile_ids.each do |profile_id| %>
+        <% profile = Profile.find_by(id: profile_id) %>
+        <% if profile %>
+          <li><%= link_to profile.login, profile_path(profile) %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No profiles have added this hobby yet.</p>
+  <% end %>
+</div>
+

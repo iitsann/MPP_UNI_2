@@ -7,6 +7,16 @@
           <p class="card-text"><%= @topic.description %></p>
         </div>
       </div>
+      <% if @topic.posts.any? %>
+        <h4>Posts in this topic:</h4>
+        <ul>
+          <% @topic.posts.each do |post| %>
+            <li><%= link_to post.title, post_path(post) %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No posts available for this topic.</p>
+      <% end %>
     </div>
   </div>
 </div>

@@ -4,7 +4,29 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.order(likes: :desc, dislikes: :asc)
+    @posts = Post.where(is_hidden: false)
+    sort_by = params[:sort_by]
+    direction = params[:direction] == 'desc' ? :desc : :asc
+    @posts = case sort_by
+             when 'date'
+               @posts.order(created_at: direction)
+             when 'rating'
+               @posts.sort_by do |post|
+                 reactions = post.likes + post.dislikes
+                 if reactions > 0
+                   rating = post.likes.to_f / reactions
+                 elsif post.likes == 0 && post.dislikes > 0
+                   rating = -1
+                 else
+                   rating = -2
+                 end
+                 direction == :desc ? -rating : rating
+               end
+             when 'topics'
+               @posts.joins(:topic).order("topics.name #{direction}")
+             else
+               @posts.order(created_at: direction)
+             end
   end
 
   # GET /posts/1 or /posts/1.json
@@ -20,7 +42,7 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
     @post.replies = 0
     @post.likes = 0
     @post.dislikes = 0
@@ -62,25 +84,28 @@ class PostsController < ApplicationController
   def like
     @post = Post.find(params[:id])
     @post.increment!(:likes)
-    redirect_to @post
+    redirect_back(fallback_location: root_path)
   end
 
   def dislike
     @post = Post.find(params[:id])
     @post.increment!(:dislikes)
-    redirect_to @post
+    redirect_back(fallback_location: root_path)
+  end
+
+  def user_posts
+    @user = User.find(params[:id])
+    @posts = @user.posts.where(is_hidden: false).order(likes: :desc, dislikes: :asc)
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:topic_id, :replies, :img_link, :title, :body, :likes, :dislikes)
+    params.require(:post).permit(:topic_id, :replies, :title, :body, :likes, :dislikes, :image)
   end
 
   def check_ban
