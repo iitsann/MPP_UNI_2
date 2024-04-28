@@ -1,0 +1,15 @@
+<div class="container mt-4">
+  <p class="text-success"><%= notice %></p>
+  <h1>Hobbies</h1>
+  <div id="hobbies" class="mt-3">
+    <% @hobbies.each do |hobby| %>
+      <div class="card mb-3">
+        <%= render hobby %>
+        <div class="card-body">
+          <%= link_to "Show this hobby", hobby, class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "New hobby", new_hobby_path, class: "btn btn-success" %>
+</div>

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <%= link_to 'Forum', home_path, class: 'navbar-brand' %>
-    <div class="navbar-nav ml-auto">
+    <div class="navbar-nav">
       <li class="nav-item">
         <%= link_to 'Posts', posts_path, class: 'nav-link' %>
       </li>
@@ -14,10 +14,14 @@
         <li class="nav-item">
           <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
         </li>
-        <li class="nav-item">
-          <%= link_to current_user.email, edit_user_registration_path, class: 'nav-link' %>
-        </li>
-      <% else %>
+        <%= link_to profile_path(current_user.profile) do %>
+          <% if current_user.profile.avatar.attached? %>
+            <%= image_tag(current_user.profile.avatar, class: 'avatar-image') %>
+          <% else %>
+            <%= current_user.email %>
+          <% end %>
+        <% end %>
+    <% else %>
         <li class="nav-item">
           <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
         </li>
@@ -28,3 +32,13 @@
     </div>
   </div>
 </nav>
+
+<style>
+    .avatar-image {
+        width: 32px;
+        height: 32px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+</style>
+

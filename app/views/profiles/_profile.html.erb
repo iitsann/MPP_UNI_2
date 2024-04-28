@@ -1,0 +1,76 @@
+<div id="<%= dom_id profile %>" class="container mt-3">
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <strong>Login:</strong>
+    </div>
+    <div class="col-sm-10">
+      <%= profile.login %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <strong>Email:</strong>
+    </div>
+    <div class="col-sm-10">
+      <%= profile.user.email %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <strong>Gender:</strong>
+    </div>
+    <div class="col-sm-10">
+      <%= profile.gender %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <strong>Birth date:</strong>
+    </div>
+    <div class="col-sm-10">
+      <%= profile.birth_date %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <strong>Age:</strong>
+    </div>
+    <div class="col-sm-10">
+      <%= profile.calculate_age %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <strong>City:</strong>
+    </div>
+    <div class="col-sm-10">
+      <%= profile.city %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <strong>Hobbies:</strong>
+    </div>
+    <div class="col-sm-10">
+      <% if profile.hobbies.present? %>
+        <% profile.hobbies.split(',').reject(&:empty?).each do |hobby_id| %>
+          <div>
+            <% hobby = Hobby.find_by(id: hobby_id.strip) %>
+            <%= link_to hobby.name, hobby_path(hobby) if hobby.present? %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No hobbies added yet.</p>
+      <% end %>
+    </div>
+  </div>
+
+  <%= link_to "All user's posts", user_posts_path(profile.user), class: "btn btn-info mb-3"%>
+
+</div>

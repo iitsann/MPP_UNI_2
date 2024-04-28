@@ -1,0 +1,33 @@
+<%= form_with(model: hobby, local: true) do |form| %>
+  <% if hobby.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(hobby.errors.count, "error") %> prohibited this hobby from being saved:</h2>
+      <ul>
+        <% hobby.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, 'Hobby Name' %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+  <% profile_ids = hobby.profile_ids.present? ? hobby.profile_ids.split(',').map(&:strip) : [] %>
+  <% if profile_ids.any? %>
+    <h3>Profiles with this hobby:</h3>
+    <ul>
+      <% profile_ids.each do |profile_id| %>
+        <% profile = Profile.find_by(id: profile_id) %>
+        <% if profile %>
+          <li><%= link_to profile.login, profile_path(profile) %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No profiles have added this hobby yet.</p>
+  <% end %>
+
+  <%= form.submit 'Save Hobby', class: 'btn btn-primary' %>
+<% end %>
