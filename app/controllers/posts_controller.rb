@@ -6,23 +6,23 @@ class PostsController < ApplicationController
   def index
     @posts = Post.where(is_hidden: false)
     sort_by = params[:sort_by]
-    direction = params[:direction] == 'desc' ? :desc : :asc
+    direction = params[:direction] == "desc" ? :desc : :asc
     @posts = case sort_by
-             when 'date'
+             when "date"
                @posts.order(created_at: direction)
-             when 'rating'
+             when "rating"
                @posts.sort_by do |post|
                  reactions = post.likes + post.dislikes
-                 if reactions > 0
-                   rating = post.likes.to_f / reactions
-                 elsif post.likes == 0 && post.dislikes > 0
-                   rating = -1
-                 else
-                   rating = -2
-                 end
+                 rating = if reactions > 0
+                            post.likes.to_f / reactions
+                          elsif post.likes == 0 && post.dislikes > 0
+                            -1
+                          else
+                            -2
+                          end
                  direction == :desc ? -rating : rating
                end
-             when 'topics'
+             when "topics"
                @posts.joins(:topic).order("topics.name #{direction}")
              else
                @posts.order(created_at: direction)

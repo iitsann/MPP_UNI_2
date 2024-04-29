@@ -46,10 +46,10 @@
 
   <div class="row mb-2">
     <div class="col-sm-2">
-      <strong>City:</strong>
+      <strong>Location:</strong>
     </div>
     <div class="col-sm-10">
-      <%= profile.city %>
+      <%= current_user.country %>, <%= current_user.city %>
     </div>
   </div>
 
@@ -71,6 +71,16 @@
     </div>
   </div>
 
-  <%= link_to "All user's posts", user_posts_path(profile.user), class: "btn btn-info mb-3"%>
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <strong>Weather:</strong>
+    </div>
+    <div class="col-sm-10">
+      <% res = fetch_weather(current_user.city, current_user.country) %>
+      Min: <%= res.main.temp_min_c %>&#8451;, Max: <%= res.main.temp_max_c %>&#8451;, <%= res.weather[0].description %>
+    </div>
+  </div>
+
+  <%= link_to "All user's posts", user_posts_path(profile.user), class: "btn btn-info mb-3" %>
 
 </div>

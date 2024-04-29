@@ -1,3 +1,2 @@
 class Hobby < ApplicationRecord
-
 end

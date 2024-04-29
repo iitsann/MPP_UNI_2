@@ -9,14 +9,12 @@ class Post < ApplicationRecord
   def acceptable_image
     return unless image.attached?
 
-    unless image.byte_size <= 3.megabytes
-      errors.add(:image, 'is too large. Image must be less than 3MB.')
-    end
+    errors.add(:image, "is too large. Image must be less than 3MB.") unless image.byte_size <= 3.megabytes
 
     acceptable_types = ["image/jpeg", "image/png"]
-    unless acceptable_types.include?(image.content_type)
-      errors.add(:image, 'must be a JPEG or PNG.')
-    end
+    return if acceptable_types.include?(image.content_type)
+
+    errors.add(:image, "must be a JPEG or PNG.")
   end
 
   def self.ransackable_associations(_auth_object=nil)
