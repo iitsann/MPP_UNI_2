@@ -28,6 +28,8 @@ ActiveAdmin.register User do
     column :created_at
     column :updated_at
     column :is_banned
+    column :country
+    column :city
     actions defaults: true do |user|
       if user.is_banned
         link_to "Unban", unban_admin_user_path(user), method: :put

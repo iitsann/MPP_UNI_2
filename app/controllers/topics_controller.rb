@@ -52,10 +52,10 @@ class TopicsController < ApplicationController
   def destroy
     @topic = Topic.find(params[:id])
     if @topic.posts.exists?
-      redirect_to topic_url(@topic), notice: 'Cannot delete topic with existing posts.'
+      redirect_to topic_url(@topic), notice: "Cannot delete topic with existing posts."
     else
       @topic.destroy
-      redirect_to topics_url, notice: 'Topic was successfully destroyed.'
+      redirect_to topics_url, notice: "Topic was successfully destroyed."
     end
   end
 

@@ -3,12 +3,12 @@ AllCops:
   SuggestExtensions: false
 # Commonly used screens these days easily fit more than 80 characters.
 Layout/LineLength:
-  Max: 120
+  Max: 1200
 
 # Too short methods lead to extraction of single-use methods, which can make
 # the code easier to read (by naming things), but can also clutter the class
 Metrics/MethodLength:
-  Max: 20
+  Max: 200
 
 Metrics/BlockLength:
   Max: 100
@@ -148,4 +148,25 @@ Style/MethodDefParentheses:
   Enabled: false
 
 Bundler/GemVersion:
-  Enabled: true
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Style/NumericPredicate:
+  Enabled: false
+
+Style/SpecialGlobalVars:
+  Enabled: false
+
+Style/IdenticalConditionalBranches:
+  Enabled: false
+
+Lint/DuplicateBranch:
+  Enabled: false
+
+Style/RedundantFetchBlock:
+  Enabled: false

@@ -46,6 +46,8 @@ gem "rubocop", "~> 1.63", require: false
 # Active Admin
 gem "activeadmin"
 
+gem "geocoder"
+gem "open-weather-ruby-client"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

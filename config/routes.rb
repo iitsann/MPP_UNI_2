@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root "home#index"
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users
-  get 'posts/user_posts/:id', to: 'posts#user_posts', as: 'user_posts'
+  devise_for :users, controllers: {registrations: "users/registrations"}
+  get "posts/user_posts/:id", to: "posts#user_posts", as: "user_posts"
   get "home", to: "home#index", as: "home"
   get "about", to: "pages#about"
   get "privacy_policy", to: "pages#privacy_policy"
