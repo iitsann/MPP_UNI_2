@@ -8,6 +8,11 @@
         <div class="card-body">
           <%= link_to "Show this profile", profile, class: "btn btn-primary" %>
         </div>
+        <div class="card-body">
+          <%= button_to create_chat_profile_path(profile), method: :post, class: "btn btn-danger" do %>
+            <span> Chat </span>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
