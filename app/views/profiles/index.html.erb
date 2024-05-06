@@ -8,11 +8,13 @@
         <div class="card-body">
           <%= link_to "Show this profile", profile, class: "btn btn-primary" %>
         </div>
-        <div class="card-body">
-          <%= button_to create_chat_profile_path(profile), method: :post, class: "btn btn-danger" do %>
-            <span> Chat </span>
-          <% end %>
-        </div>
+        <% if current_user.profile.id != profile[:id] %>
+          <div class="card-body">
+            <%= button_to create_chat_profile_path(profile), method: :post, class: "btn btn-danger" do %>
+              <span> Chat </span>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>

@@ -49,7 +49,7 @@
       <strong>Location:</strong>
     </div>
     <div class="col-sm-10">
-      <%= current_user.country %>, <%= current_user.city %>
+      <%= profile.country %>, <%= profile.city %>
     </div>
   </div>
 
@@ -76,7 +76,7 @@
       <strong>Weather:</strong>
     </div>
     <div class="col-sm-10">
-      <% res = fetch_weather(current_user.city, current_user.country) %>
+      <% res = fetch_weather(profile.city, profile.country) %>
       Min: <%= res.main.temp_min_c %>&#8451;, Max: <%= res.main.temp_max_c %>&#8451;, <%= res.weather[0].description %>
     </div>
   </div>

@@ -3,7 +3,6 @@
     <% other_profile = private_chat.profile1_id == @profile.id ? private_chat.profile2 : private_chat.profile1 %>
     <%= link_to profile_private_chat_path(@user, @profile, private_chat) do %>
       <div class="private_chat__index__cards">
-        <%#= cl_image_tag other_profile.avatar.key.to_s, crop: :fill, :class => "card__avatar" %>
         <div class="private_chat__cards__text">
           <h3><%= other_profile.email %></h3>
           <p><%= other_profile.updated_at.strftime("%d/%m/%Y %H:%M:%S") %></p>

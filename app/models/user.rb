@@ -13,6 +13,6 @@ class User < ApplicationRecord
   end
 
   def create_profile
-    Profile.create(user: self)
+    Profile.create(user: self, email:, city:, country:)
   end
 end
