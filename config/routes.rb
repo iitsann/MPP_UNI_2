@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   resources :hobbies
   resources :profiles do
     patch :update_hobbies, on: :member
+    post "create_chat", on: :member
+    resources :private_chats, only: %i[index show] do
+      resources :messages, only: [:create]
+    end
   end
   resources :posts do
     member do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_240_428_190_350) do
+ActiveRecord::Schema[7.1].define(version: 20_240_506_180_115) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,8 +35,7 @@ ActiveRecord::Schema[7.1].define(version: 20_240_428_190_350) do
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index %w[record_type record_id name blob_id], name: "index_active_storage_attachments_uniqueness",
-                                                    unique: true
+    t.index %w[record_type record_id name blob_id], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
@@ -76,6 +75,16 @@ ActiveRecord::Schema[7.1].define(version: 20_240_428_190_350) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "private_chat_id", null: false
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["private_chat_id"], name: "index_messages_on_private_chat_id"
+    t.index ["profile_id"], name: "index_messages_on_profile_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -91,6 +100,15 @@ ActiveRecord::Schema[7.1].define(version: 20_240_428_190_350) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "private_chats", force: :cascade do |t|
+    t.bigint "profile1_id", null: false
+    t.bigint "profile2_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile1_id"], name: "index_private_chats_on_profile1_id"
+    t.index ["profile2_id"], name: "index_private_chats_on_profile2_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "login"
     t.string "email"
@@ -102,6 +120,7 @@ ActiveRecord::Schema[7.1].define(version: 20_240_428_190_350) do
     t.text "hobbies"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "country"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -137,7 +156,11 @@ ActiveRecord::Schema[7.1].define(version: 20_240_428_190_350) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "messages", "private_chats"
+  add_foreign_key "messages", "profiles"
   add_foreign_key "posts", "topics"
   add_foreign_key "posts", "users"
+  add_foreign_key "private_chats", "profiles", column: "profile1_id"
+  add_foreign_key "private_chats", "profiles", column: "profile2_id"
   add_foreign_key "profiles", "users"
 end

@@ -1,38 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Forum</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Forum</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_importmap_tags %>
 
-  <style>
+  <script type="module" src="/assets/application.js"></script>
+  <script type="module" src="/assets/turbo.min.js"></script>
+  <script type="module" src="/assets/stimulus.min.js"></script>
+  <script type="module" src="/assets/actioncable.esm.js"></script>
+  <script type="module" src="/assets/controllers/application.js"></script>
+  <script type="module" src="/assets/controllers/hello_controller.js"></script>
+  <script type="module" src="/assets/controllers/index.js"></script>
+  <script type="module" src="/assets/controllers/private_chat_subscription_controller.js"></script>
+  <script type="module" src="/assets/channels/consumer.js"></script>
+  <script type="module" src="/assets/channels/index.js"></script>
+  <script type="module" src="/assets/channels/private_chat_channel.js"></script>
+</head>
+
+<style>
     body {
         padding-bottom: 60px;
     }
-  </style>
+</style>
 
-  <body>
-    <%= render 'layouts/navbar' %>
-    <main class="container mt-4">
-      <%= yield %>
-    </main>
-    <footer class="footer bg-light fixed-bottom py-3">
-      <div class="container d-flex justify-content-center">
-        <div class="mx-3">
-          <%= link_to 'About Forum', about_path %>
-        </div>
-        <div class="mx-3">
-          <%= link_to 'Privacy Policy', privacy_policy_path %>
-        </div>
-        <div class="mx-3">
-          <%= link_to 'Terms of Service', terms_of_service_path %>
-        </div>
-      </div>
-    </footer>
-  </body>
+<body>
+<%= render 'layouts/navbar' %>
+<main class="container mt-4">
+  <%= yield %>
+</main>
+<footer class="footer bg-light fixed-bottom py-3">
+  <div class="container d-flex justify-content-center">
+    <div class="mx-3">
+      <%= link_to 'About Forum', about_path %>
+    </div>
+    <div class="mx-3">
+      <%= link_to 'Privacy Policy', privacy_policy_path %>
+    </div>
+    <div class="mx-3">
+      <%= link_to 'Terms of Service', terms_of_service_path %>
+    </div>
+  </div>
+</footer>
+</body>
 </html>

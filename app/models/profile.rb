@@ -1,6 +1,9 @@
 class Profile < ApplicationRecord
   belongs_to :user
   has_one_attached :avatar
+  has_many :messages
+  has_many :private_chats_as_profile1, class_name: "PrivateChat", foreign_key: "profile1_id"
+  has_many :private_chats_as_profile2, class_name: "PrivateChat", foreign_key: "profile2_id"
   validate :acceptable_avatar
 
   def acceptable_avatar
