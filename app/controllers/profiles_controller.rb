@@ -33,19 +33,14 @@ class ProfilesController < InheritedResources::Base
   end
 
   def create_chat
-    @selected_profile = Profile.find(params[:id])
-    profile1_id = current_user.profile.id
-    profile2_id = @selected_profile.id
+    result = ChatCreationService.create_chat(current_user, params[:id])
 
-    if current_user.profile == @selected_profile
-      flash[:alert] = "You cannot send a message to yourself."
-      redirect_to profile_path(current_user, current_user.profile) and return
+    if result[:alert]
+      flash[:alert] = result[:alert]
+      redirect_to profile_path(result[:profile]) and return
     end
 
-    @private_chat = PrivateChat.get_private_chat(profile1_id, profile2_id)
-    @private_chat ||= PrivateChat.create(profile1: current_user.profile, profile2: @selected_profile)
-
-    redirect_to profile_private_chat_path(current_user.profile, @private_chat.id)
+    redirect_to profile_private_chat_path(result[:profile], result[:private_chat].id)
   end
 
   private

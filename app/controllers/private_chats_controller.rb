@@ -20,8 +20,6 @@ class PrivateChatsController < ApplicationController
   private
 
   def find_private_chat
-    p params.to_json
-
     @private_chat = PrivateChat.find(params[:id])
   end
 
