@@ -3,30 +3,10 @@ class PostsController < ApplicationController
   before_action :check_ban, only: %i[create update like dislike]
 
   # GET /posts or /posts.json
+  # app/controllers/posts_controller.rb
+
   def index
-    @posts = Post.where(is_hidden: false)
-    sort_by = params[:sort_by]
-    direction = params[:direction] == "desc" ? :desc : :asc
-    @posts = case sort_by
-             when "date"
-               @posts.order(created_at: direction)
-             when "rating"
-               @posts.sort_by do |post|
-                 reactions = post.likes + post.dislikes
-                 rating = if reactions > 0
-                            post.likes.to_f / reactions
-                          elsif post.likes == 0 && post.dislikes > 0
-                            -1
-                          else
-                            -2
-                          end
-                 direction == :desc ? -rating : rating
-               end
-             when "topics"
-               @posts.joins(:topic).order("topics.name #{direction}")
-             else
-               @posts.order(created_at: direction)
-             end
+    @posts = PostSortingService.sort_posts(params[:sort_by], params[:direction])
   end
 
   # GET /posts/1 or /posts/1.json
@@ -42,18 +22,16 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = current_user.posts.new(post_params)
-    @post.replies = 0
-    @post.likes = 0
-    @post.dislikes = 0
+    result = PostCreationService.create_post(current_user, post_params)
 
     respond_to do |format|
-      if @post.save
-        format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
+      if result[:status] == :created
+        @post = result[:post]
+        format.html { redirect_to post_url(@post), notice: result[:message] }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.json { render json: result[:errors], status: :unprocessable_entity }
       end
     end
   end
@@ -95,7 +73,7 @@ class PostsController < ApplicationController
 
   def user_posts
     @user = User.find(params[:id])
-    @posts = @user.posts.where(is_hidden: false).order(likes: :desc, dislikes: :asc)
+    @posts = UserPostsQuery.call(@user.id)
   end
 
   private
