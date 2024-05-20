@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, controllers: {registrations: "users/registrations"}
   get "posts/user_posts/:id", to: "posts#user_posts", as: "user_posts"
+  get "search_posts", to: "posts#index"
   get "home", to: "home#index", as: "home"
   get "about", to: "pages#about"
   get "privacy_policy", to: "pages#privacy_policy"

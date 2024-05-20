@@ -7,6 +7,9 @@ class PostsController < ApplicationController
 
   def index
     @posts = PostSortingService.sort_posts(params[:sort_by], params[:direction])
+    if params[:search].present?
+      @posts = @posts.where("title LIKE ?", "%#{params[:search]}%")
+    end
   end
 
   # GET /posts/1 or /posts/1.json

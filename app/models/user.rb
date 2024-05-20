@@ -3,7 +3,8 @@ class User < ApplicationRecord
   has_one :profile
   has_many :posts
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+          :confirmable
   validates :email, :password, presence: true
   validates :email, uniqueness: true
 

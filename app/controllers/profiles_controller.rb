@@ -28,7 +28,9 @@ class ProfilesController < InheritedResources::Base
 
   # DELETE /profiles/1
   def destroy
+    user = @profile.user
     @profile.destroy
+    user.destroy
     redirect_to profiles_url, notice: "Profile was successfully deleted."
   end
 
@@ -46,7 +48,10 @@ class ProfilesController < InheritedResources::Base
   private
 
   def set_profile
-    @profile = Profile.find(params[:id])
+    @profile = Profile.find_by(id: params[:id])
+    if @profile.nil?
+      redirect_to root_path, alert: "Profile not found." # Або інша дія
+    end
   end
 
   def profile_params

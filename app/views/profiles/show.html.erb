@@ -9,8 +9,5 @@
     <% if current_user == @profile.user %>
       <%= button_to "Destroy this profile", @profile, method: :delete, class: "btn btn-danger" %>
     <% end %>
-    <%= button_to create_chat_profile_path(@profile), method: :post, class: "btn btn-danger" do %>
-      <span> Chat </span>
-    <% end %>
   </div>
 </div>

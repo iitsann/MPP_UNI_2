@@ -25,3 +25,10 @@
    ```
     bin/rails db:migrate
     ``` 
+
+## Email Testing with MailCatcher
+
+* Run MailCatcher:
+  ```
+    mailcatcher
+  ```
