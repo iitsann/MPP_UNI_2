@@ -49,9 +49,9 @@ class ProfilesController < InheritedResources::Base
 
   def set_profile
     @profile = Profile.find_by(id: params[:id])
-    if @profile.nil?
-      redirect_to root_path, alert: "Profile not found." # Або інша дія
-    end
+    return unless @profile.nil?
+
+    redirect_to root_path, alert: "Profile not found." # Або інша дія
   end
 
   def profile_params

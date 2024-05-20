@@ -10,4 +10,12 @@ class PrivateChat < ApplicationRecord
       profile1_id:, profile2_id:
     ).first
   end
+
+  def self.ransackable_associations(_auth_object=nil)
+    %w[messages profile1 profile2]
+  end
+
+  def self.ransackable_attributes(_auth_object=nil)
+    %w[created_at id id_value profile1_id profile2_id updated_at]
+  end
 end
