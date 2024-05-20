@@ -22,7 +22,7 @@ class Post < ApplicationRecord
   end
 
   def self.ransackable_attributes(_auth_object=nil)
-    %w[body created_at dislikes id id_value img_link likes replies title topic_id
+    %w[user_id image_attachment_id_eq image_blob_id_eq body created_at dislikes id id_value img_link likes replies title topic_id
        updated_at is_hidden]
   end
 end

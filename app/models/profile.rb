@@ -22,4 +22,8 @@ class Profile < ApplicationRecord
 
     ((Time.zone.now - birth_date.to_time) / 1.year.seconds).floor
   end
+
+  def self.ransackable_attributes(_auth_object=nil)
+    %w[age birth_date city country created_at email gender hobbies id id_value login updated_at user_id]
+  end
 end
