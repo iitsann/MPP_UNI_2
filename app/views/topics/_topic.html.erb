@@ -7,6 +7,16 @@
           <p class="card-text"><%= @topic.description %></p>
         </div>
       </div>
+      <% if @topic.posts.any? %>
+        <h4><%=I18n.t("posts_in_this_topic")%></h4>
+        <ul>
+          <% @topic.posts.each do |post| %>
+            <li><%= link_to post.title, post_path(post) %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p><%=I18n.t("no_posts")%></p>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,5 +1,4 @@
 ActiveAdmin.register User do
-
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -29,11 +28,13 @@ ActiveAdmin.register User do
     column :created_at
     column :updated_at
     column :is_banned
+    column :country
+    column :city
     actions defaults: true do |user|
       if user.is_banned
-        link_to 'Unban', unban_admin_user_path(user), method: :put
+        link_to "Unban", unban_admin_user_path(user), method: :put
       else
-        link_to 'Ban', ban_admin_user_path(user), method: :put
+        link_to "Ban", ban_admin_user_path(user), method: :put
       end
     end
   end
@@ -45,5 +46,4 @@ ActiveAdmin.register User do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-
 end

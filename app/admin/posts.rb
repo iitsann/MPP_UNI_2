@@ -1,10 +1,6 @@
-ActiveAdmin.register Post do
+# frozen_string_literal: true
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
+ActiveAdmin.register Post do
   permit_params :img_link, :title, :body, :replies, :likes, :dislikes, :topic_id, :is_hidden
 
   actions :all
@@ -34,20 +30,10 @@ ActiveAdmin.register Post do
     column :is_hidden
     actions defaults: true do |post|
       if post.is_hidden
-        link_to 'Open', open_admin_post_path(post), method: :put
+        link_to "Open", open_admin_post_path(post), method: :put
       else
-        link_to 'Hide', hide_admin_post_path(post), method: :put
+        link_to "Hide", hide_admin_post_path(post), method: :put
       end
     end
   end
-
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:img_link, :title, :body, :replies, :likes, :dislikes, :topic_id]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-
 end

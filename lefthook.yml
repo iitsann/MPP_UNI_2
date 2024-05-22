@@ -1,0 +1,10 @@
+pre-commit:
+  commands:
+    rubocop:
+      glob: "app/**/*.{rb,erb}"
+      run: 'bundle exec rubocop --force-exclusion {all_files}'
+
+commit-msg:
+  scripts:
+    "template_checker.sh":
+      runner: bash

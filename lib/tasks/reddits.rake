@@ -3,28 +3,25 @@ namespace :reddits do
 
   task :parse, [:file_name] => :environment do
     main_link = "https://www.reddit.com"
-    url = 'https://www.reddit.com/r/ListOfSubreddits/wiki/listofsubreddits'
+    url = "https://www.reddit.com/r/ListOfSubreddits/wiki/listofsubreddits"
 
     html = URI.open(url)
     doc = Nokogiri::HTML(html)
 
-    doc.css('div.md.wiki').each do |div|
-      div.css('h1, h2, h3, h4').each do |header|
-        if header['id'] == 'wiki_general_content'
-          next
-        end
+    doc.css("div.md.wiki").each do |div|
+      div.css("h1, h2, h3, h4").each do |header|
+        next if header["id"] == "wiki_general_content"
 
         topic = header.text.strip
-        paragraph = header.xpath('following-sibling::p').first
+        paragraph = header.xpath("following-sibling::p").first
 
-        if paragraph
-          paragraph.css('a').each do |link|
-            title = link.text.strip
-            url = main_link + link['href']
+        next unless paragraph
 
-            Reddit.create(topic: topic, subreddit: title, link: url)
+        paragraph.css("a").each do |link|
+          title = link.text.strip
+          url = main_link + link["href"]
 
-          end
+          Reddit.create(topic:, subreddit: title, link: url)
         end
       end
     end

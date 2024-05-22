@@ -53,7 +53,7 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
-  # Highlight code that triggered database queries in logs.
+  # Highlight code that triggered database query in logs.
   config.active_record.verbose_query_logs = true
 
   # Highlight code that enqueued background job in logs.
@@ -73,4 +73,9 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # MailCatcher configuration
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {address: "localhost", port: 1025}
+  config.action_mailer.default_url_options = {host: "localhost", port: 3000}
 end

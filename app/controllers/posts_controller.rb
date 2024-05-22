@@ -1,15 +1,19 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy ]
-  before_action :check_ban, only: [:create, :update, :like, :dislike]
+  before_action :set_post, only: %i[show edit update destroy]
+  before_action :check_ban, only: %i[create update like dislike]
 
   # GET /posts or /posts.json
+  # app/controllers/posts_controller.rb
+
   def index
-    @posts = Post.order(likes: :desc, dislikes: :asc)
+    @posts = PostSortingService.sort_posts(params[:sort_by], params[:direction])
+    return unless params[:search].present?
+
+    @posts = @posts.where("title LIKE ?", "%#{params[:search]}%")
   end
 
   # GET /posts/1 or /posts/1.json
-  def show
-  end
+  def show; end
 
   # GET /posts/new
   def new
@@ -17,23 +21,20 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
-    @post.replies = 0
-    @post.likes = 0
-    @post.dislikes = 0
+    result = PostCreationService.create_post(current_user, post_params)
 
     respond_to do |format|
-      if @post.save
-        format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
+      if result[:status] == :created
+        @post = result[:post]
+        format.html { redirect_to post_url(@post), notice: result[:message] }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.json { render json: result[:errors], status: :unprocessable_entity }
       end
     end
   end
@@ -64,30 +65,33 @@ class PostsController < ApplicationController
   def like
     @post = Post.find(params[:id])
     @post.increment!(:likes)
-    redirect_to @post
+    redirect_back(fallback_location: root_path)
   end
 
   def dislike
     @post = Post.find(params[:id])
     @post.increment!(:dislikes)
-    redirect_to @post
+    redirect_back(fallback_location: root_path)
+  end
+
+  def user_posts
+    @user = User.find(params[:id])
+    @posts = UserPostsQuery.call(@user.id)
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:topic_id, :replies, :img_link, :title, :body, :likes, :dislikes)
+    params.require(:post).permit(:topic_id, :replies, :title, :body, :likes, :dislikes, :image)
   end
 
   def check_ban
-    if current_user.is_banned
-      redirect_to root_path, alert: 'Your account is banned. You cannot perform this action.'
-    end
+    return unless current_user.is_banned
+
+    redirect_to root_path, alert: "Your account is banned. You cannot perform this action."
   end
 end

@@ -1,0 +1,83 @@
+<div id="<%= dom_id profile %>" class="container mt-3">
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <strong><%= I18n.t("login") %></strong>
+    </div>
+    <div class="col-sm-10">
+      <%= profile.login %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <strong><%= I18n.t("email") %></strong>
+    </div>
+    <div class="col-sm-10">
+      <%= profile.user.email %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <strong><%= I18n.t("gender") %></strong>
+    </div>
+    <div class="col-sm-10">
+      <%= profile.gender %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <strong><%= I18n.t("birth_date") %></strong>
+    </div>
+    <div class="col-sm-10">
+      <%= profile.birth_date %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <strong><%= I18n.t("age") %></strong>
+    </div>
+    <div class="col-sm-10">
+      <%= profile.calculate_age %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <strong><%= I18n.t("location") %></strong>
+    </div>
+    <div class="col-sm-10">
+      <%= profile.country %>, <%= profile.city %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <strong><%= I18n.t("hobbies") %></strong>
+    </div>
+    <div class="col-sm-10">
+      <% if profile.hobbies.present? %>
+        <% profile.hobbies.split(',').reject(&:empty?).each do |hobby_id| %>
+          <div>
+            <% hobby = Hobby.find_by(id: hobby_id.strip) %>
+            <%= link_to hobby.name, hobby_path(hobby) if hobby.present? %>
+          </div>
+        <% end %>
+      <% else %>
+        <p><%= I18n.t("no_hobbies") %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <strong><%= I18n.t("weather") %></strong>
+    </div>
+    <div class="col-sm-10">
+      <% res = fetch_weather(profile.city, profile.country) %>
+      Min: <%= res.main.temp_min_c %>&#8451;, Max: <%= res.main.temp_max_c %>&#8451;, <%= res.weather[0].description %>
+    </div>
+  </div>
+</div>

@@ -1,16 +1,31 @@
 class ApplicationController < ActionController::Base
   include Devise::Controllers::Helpers
   around_action :switch_locale
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def switch_locale(&action)
-    params_locale = I18n.locale_available?(params[:locale]) && params[:locale]
-    locale = params_locale || locale_from_header || I18n.default_locale
+  def switch_locale(&)
+    locale = I18nParamsLocaleQuery.new(params).call(locale_from_header)
 
-    I18n.with_locale(locale, &action)
+    I18n.with_locale(locale, &)
   end
 
   def locale_from_header
-    locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    locale = I18nHeadersLocaleQuery.new(request).call
+
     I18n.locale_available?(locale) && locale
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def default_url_options
+    { locale: I18n.locale }
+  end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[country city])
   end
 end
