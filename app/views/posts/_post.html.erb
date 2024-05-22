@@ -1,7 +1,7 @@
 <div id="<%= dom_id post %>" class="post-container card mb-3">
   <div class="card-body">
     <p class="card-text">
-      <strong>Topic:</strong>
+      <strong><%= I18n.t("topic") %></strong>
       <%= post.topic.name %>
     </p>
 
@@ -11,18 +11,13 @@
       </div>
     <% end %>
 
-    <p class="card-text">
-      <strong>Replies:</strong>
-      <%= post.replies %>
-    </p>
-
     <p class="card-title">
-      <strong>Title:</strong>
+      <strong><%= I18n.t("name") %></strong>
       <%= post.title %>
     </p>
 
     <p class="card-text">
-      <strong>Body:</strong>
+      <strong><%= I18n.t("body") %></strong>
       <%= post.body %>
     </p>
 
@@ -34,6 +29,11 @@
     <p class="card-text">
       <strong>Dislikes:</strong>
       <%= post.dislikes %>
+    </p>
+
+    <p class="card-text">
+      <strong>Replies:</strong>
+      <%= post.replies %>
     </p>
   </div>
 </div>
