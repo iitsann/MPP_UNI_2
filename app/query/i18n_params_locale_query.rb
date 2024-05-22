@@ -6,8 +6,10 @@ class I18nParamsLocaleQuery
   end
 
   def call(locale_from_header)
-    params_locale = I18n.locale_available?(@init_params[:locale]) && @init_params[:locale]
-
-    params_locale || locale_from_header || I18n.default_locale
+    if I18n.locale_available?(@init_params[:locale])
+      @init_params[:locale]
+    else
+      locale_from_header || I18n.default_locale
+    end
   end
 end

@@ -10,14 +10,14 @@
     </div>
   <% end %>
   <div class="form-group">
-    <%= form.label :name, class: "control-label" %>
+    <%= form.label :name, I18n.t("name"), class: "control-label" %>
     <%= form.text_field :name, class: "form-control" %>
   </div>
   <div class="form-group mt-3">
-    <%= form.label :description, class: "control-label" %>
+    <%= form.label :description, I18n.t("description"), class: "control-label" %>
     <%= form.text_area :description, class: "form-control" %>
   </div>
   <div class="form-group mt-3">
-    <%= form.submit "Create Topic", class: "btn btn-primary" %>
+    <%= form.submit I18n.t("create_topic"), class: "btn btn-primary" %>
   </div>
 <% end %>

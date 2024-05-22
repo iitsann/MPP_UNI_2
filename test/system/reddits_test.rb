@@ -7,7 +7,7 @@ class RedditsTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit reddits_url
-    assert_selector "h1", text: "Reddits"
+    assert_selector "h1", text: I18n.t("root_page.reddits")
   end
 
   test "should create reddit" do

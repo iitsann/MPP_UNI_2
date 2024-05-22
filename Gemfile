@@ -51,8 +51,9 @@ gem "rubocop", "~> 1.63", require: false
 # Active Admin
 gem "activeadmin"
 
-gem "letter_opener"
 gem "mailcatcher"
+
+gem "i18n"
 
 gem "geocoder"
 gem "open-weather-ruby-client"

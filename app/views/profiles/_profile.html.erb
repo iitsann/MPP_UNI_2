@@ -1,7 +1,7 @@
 <div id="<%= dom_id profile %>" class="container mt-3">
   <div class="row mb-2">
     <div class="col-sm-2">
-      <strong>Login:</strong>
+      <strong><%= I18n.t("login") %></strong>
     </div>
     <div class="col-sm-10">
       <%= profile.login %>
@@ -10,7 +10,7 @@
 
   <div class="row mb-2">
     <div class="col-sm-2">
-      <strong>Email:</strong>
+      <strong><%= I18n.t("email") %></strong>
     </div>
     <div class="col-sm-10">
       <%= profile.user.email %>
@@ -19,7 +19,7 @@
 
   <div class="row mb-2">
     <div class="col-sm-2">
-      <strong>Gender:</strong>
+      <strong><%= I18n.t("gender") %></strong>
     </div>
     <div class="col-sm-10">
       <%= profile.gender %>
@@ -28,7 +28,7 @@
 
   <div class="row mb-2">
     <div class="col-sm-2">
-      <strong>Birth date:</strong>
+      <strong><%= I18n.t("birth_date") %></strong>
     </div>
     <div class="col-sm-10">
       <%= profile.birth_date %>
@@ -37,7 +37,7 @@
 
   <div class="row mb-2">
     <div class="col-sm-2">
-      <strong>Age:</strong>
+      <strong><%= I18n.t("age") %></strong>
     </div>
     <div class="col-sm-10">
       <%= profile.calculate_age %>
@@ -46,7 +46,7 @@
 
   <div class="row mb-2">
     <div class="col-sm-2">
-      <strong>Location:</strong>
+      <strong><%= I18n.t("location") %></strong>
     </div>
     <div class="col-sm-10">
       <%= profile.country %>, <%= profile.city %>
@@ -55,7 +55,7 @@
 
   <div class="row mb-2">
     <div class="col-sm-2">
-      <strong>Hobbies:</strong>
+      <strong><%= I18n.t("hobbies") %></strong>
     </div>
     <div class="col-sm-10">
       <% if profile.hobbies.present? %>
@@ -66,14 +66,14 @@
           </div>
         <% end %>
       <% else %>
-        <p>No hobbies added yet.</p>
+        <p><%= I18n.t("no_hobbies") %></p>
       <% end %>
     </div>
   </div>
 
   <div class="row mb-2">
     <div class="col-sm-2">
-      <strong>Weather:</strong>
+      <strong><%= I18n.t("weather") %></strong>
     </div>
     <div class="col-sm-10">
       <% res = fetch_weather(profile.city, profile.country) %>
